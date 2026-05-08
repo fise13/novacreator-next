@@ -1,0 +1,76 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About",
+    "calculator": "Calculator",
+    "contact": "Contact",
+    "theme": "Theme",
+    "menu": "Menu"
+  },
+  "home": {
+    "eyebrow": "NovaCreator Studio",
+    "title": "SEO, websites, and digital growth for businesses in Kazakhstan",
+    "subtitle": "Migrating the existing PHP website to Next.js while preserving SEO, forms, pricing, calculator logic, and the RU/EN structure.",
+    "primaryCta": "Estimate a project",
+    "secondaryCta": "View services"
+  },
+  "footer": {
+    "description": "A marketing agency in Almaty: SEO, website development, paid ads, and analytics.",
+    "rights": "All rights reserved."
+  },
+  "pages": {
+    "services": {
+      "title": "Services",
+      "description": "SEO, Google Ads, landing pages, e-commerce, corporate websites, and iOS development."
+    },
+    "about": {
+      "title": "About",
+      "description": "NovaCreator Studio helps businesses grow through development, promotion, and measurable analytics."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Get in touch with NovaCreator Studio in Almaty."
+    },
+    "faq": {
+      "title": "FAQ",
+      "description": "Answers to common questions about development, SEO, and ads."
+    },
+    "vacancies": {
+      "title": "Careers",
+      "description": "Future roles and collaboration opportunities at NovaCreator Studio."
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "Personal data and lead processing rules."
+    },
+    "seo": {
+      "title": "SEO",
+      "description": "Search promotion for local and B2B businesses."
+    },
+    "ads": {
+      "title": "Google Ads and paid search",
+      "description": "Campaign setup and optimization."
+    },
+    "landing": {
+      "title": "Landing page development",
+      "description": "Fast lead-generation landing pages."
+    },
+    "ecommerce": {
+      "title": "E-commerce development",
+      "description": "Online stores with catalog, cart, and analytics."
+    },
+    "corporate": {
+      "title": "Corporate websites",
+      "description": "Company websites for brand presence and B2B sales."
+    },
+    "ios": {
+      "title": "iOS development",
+      "description": "Swift and SwiftUI apps for business."
+    },
+    "calculator": {
+      "title": "Cost calculator",
+      "description": "The exact PHP/JS calculator math will be migrated here."
+    }
+  }
+}

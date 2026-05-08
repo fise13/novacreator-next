@@ -1,0 +1,15 @@
+export type MarketingHref =
+  | "/"
+  | "/services"
+  | "/about"
+  | "/contact"
+  | "/faq"
+  | "/vacancies"
+  | "/privacy"
+  | "/seo"
+  | "/ads"
+  | "/landing-page-development"
+  | "/ecommerce-development"
+  | "/corporate-website-development"
+  | "/ios-razrabotka-swift-swiftui"
+  | "/calculator";
