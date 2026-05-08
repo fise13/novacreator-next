@@ -24,6 +24,26 @@ const nextConfig: NextConfig = {
         destination: "/contact",
         permanent: true,
       },
+      {
+        source: "/portfolio-motor-land",
+        destination: "/portfolio/motor-land",
+        permanent: true,
+      },
+      {
+        source: "/portfolio-autocore",
+        destination: "/portfolio/autocore",
+        permanent: true,
+      },
+      {
+        source: "/en/portfolio-motor-land",
+        destination: "/en/portfolio/motor-land",
+        permanent: true,
+      },
+      {
+        source: "/en/portfolio-autocore",
+        destination: "/en/portfolio/autocore",
+        permanent: true,
+      },
     ];
   },
   async headers() {

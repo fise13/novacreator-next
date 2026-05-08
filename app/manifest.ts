@@ -7,9 +7,20 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: "NovaCreator",
     description: siteConfig.defaultDescription,
     start_url: "/",
+    scope: "/",
     display: "standalone",
-    background_color: siteConfig.themes.background,
-    theme_color: siteConfig.themes.primary,
+    orientation: "portrait",
+    background_color: siteConfig.themes.backgroundLight,
+    theme_color: siteConfig.themes.backgroundLight,
     lang: "ru",
+    categories: ["business", "marketing", "productivity"],
+    icons: [
+      {
+        src: "/icon.svg",
+        sizes: "any",
+        type: "image/svg+xml",
+        purpose: "any",
+      },
+    ],
   };
 }

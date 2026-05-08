@@ -49,6 +49,21 @@
     @apply min-h-screen overflow-x-hidden bg-bg text-text antialiased;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
   ::selection {
     background: var(--color-neon-purple);
     color: #ffffff;
@@ -62,5 +77,13 @@
 
   .glass-panel {
     @apply border border-border bg-surface shadow-xl backdrop-blur-xl;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
   }
 }

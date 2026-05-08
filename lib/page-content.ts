@@ -12,6 +12,8 @@ export const pageContentKeys = {
   corporate: "corporate",
   ios: "ios",
   calculator: "calculator",
+  blog: "blog",
+  portfolio: "portfolio",
 } as const;
 
 export type PageContentKey = keyof typeof pageContentKeys;

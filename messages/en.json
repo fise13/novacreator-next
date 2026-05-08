@@ -1,6 +1,9 @@
 {
   "nav": {
     "home": "Home",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "faq": "FAQ",
     "services": "Services",
     "about": "About",
     "calculator": "Calculator",
@@ -11,8 +14,8 @@
   "home": {
     "eyebrow": "NovaCreator Studio",
     "title": "SEO, websites, and digital growth for businesses in Kazakhstan",
-    "subtitle": "Migrating the existing PHP website to Next.js while preserving SEO, forms, pricing, calculator logic, and the RU/EN structure.",
-    "primaryCta": "Estimate a project",
+    "subtitle": "Premium websites, SEO, ads and analytics built as one clear growth system.",
+    "primaryCta": "Discuss a project",
     "secondaryCta": "View services"
   },
   "footer": {
@@ -69,8 +72,16 @@
       "description": "Swift and SwiftUI apps for business."
     },
     "calculator": {
-      "title": "Cost calculator",
-      "description": "The exact PHP/JS calculator math will be migrated here."
+      "title": "Project planner",
+      "description": "Choose the service, scope and launch format before a detailed brief."
+    },
+    "blog": {
+      "title": "Blog",
+      "description": "Articles about SEO, ads, development and analytics."
+    },
+    "portfolio": {
+      "title": "Portfolio",
+      "description": "NovaCreator Studio cases: websites, apps and digital projects."
     }
   }
 }

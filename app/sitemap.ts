@@ -1,46 +1,88 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/site-config";
-
-const routes = [
-  "",
-  "/services",
-  "/about",
-  "/contact",
-  "/faq",
-  "/vacancies",
-  "/privacy",
-  "/seo",
-  "/ads",
-  "/landing-page-development",
-  "/ecommerce-development",
-  "/corporate-website-development",
-  "/ios-razrabotka-swift-swiftui",
-  "/calculator",
-];
+import {
+  absoluteUrl,
+  alternateLanguages,
+  alternateLanguagesForPaths,
+  blogSlugAlternates,
+  portfolioSeoEntries,
+  staticSeoRoutes,
+} from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-
-  return routes.flatMap((route) => [
+  const staticEntries = staticSeoRoutes.flatMap((route) => [
     {
-      url: `${siteConfig.url}${route}`,
+      url: absoluteUrl(route.path, "ru"),
       lastModified: now,
+      changeFrequency: route.changeFrequency,
+      priority: route.priority,
       alternates: {
-        languages: {
-          ru: `${siteConfig.url}${route}`,
-          en: `${siteConfig.url}/en${route}`,
-        },
+        languages: alternateLanguages(route.path),
       },
     },
     {
-      url: `${siteConfig.url}/en${route}`,
+      url: absoluteUrl(route.path, "en"),
       lastModified: now,
+      changeFrequency: route.changeFrequency,
+      priority: route.priority,
       alternates: {
-        languages: {
-          ru: `${siteConfig.url}${route}`,
-          en: `${siteConfig.url}/en${route}`,
-        },
+        languages: alternateLanguages(route.path),
       },
     },
   ]);
+
+  const portfolioEntries = Object.keys(portfolioSeoEntries).flatMap((slug) => {
+    const path = `/portfolio/${slug}`;
+
+    return [
+      {
+        url: absoluteUrl(path, "ru"),
+        lastModified: now,
+        changeFrequency: "monthly" as const,
+        priority: 0.65,
+        alternates: {
+          languages: alternateLanguages(path),
+        },
+      },
+      {
+        url: absoluteUrl(path, "en"),
+        lastModified: now,
+        changeFrequency: "monthly" as const,
+        priority: 0.65,
+        alternates: {
+          languages: alternateLanguages(path),
+        },
+      },
+    ];
+  });
+
+  const blogEntries = blogSlugAlternates.flatMap((entry) => {
+    const paths = {
+      ru: `/blog/${entry.ru}`,
+      en: `/blog/${entry.en}`,
+    };
+
+    return [
+      {
+        url: absoluteUrl(paths.ru, "ru"),
+        lastModified: now,
+        changeFrequency: "monthly" as const,
+        priority: 0.55,
+        alternates: {
+          languages: alternateLanguagesForPaths(paths),
+        },
+      },
+      {
+        url: absoluteUrl(paths.en, "en"),
+        lastModified: now,
+        changeFrequency: "monthly" as const,
+        priority: 0.55,
+        alternates: {
+          languages: alternateLanguagesForPaths(paths),
+        },
+      },
+    ];
+  });
+
+  return [...staticEntries, ...portfolioEntries, ...blogEntries];
 }

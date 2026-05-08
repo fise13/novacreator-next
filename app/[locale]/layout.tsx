@@ -1,8 +1,6 @@
 import { hasLocale } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { Footer } from "@/components/layout/Footer";
-import { Header } from "@/components/layout/Header";
 import { Providers } from "@/components/layout/Providers";
 import { routing } from "@/i18n/routing";
 
@@ -34,11 +32,9 @@ export default async function LocaleLayout({
       >
         Skip to main
       </a>
-      <Header />
       <main id="main-content" className="min-h-screen">
         {children}
       </main>
-      <Footer />
     </Providers>
   );
 }

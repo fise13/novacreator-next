@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f7f4ed"/>
+  <circle cx="1030" cy="95" r="180" fill="#ff5a45" opacity=".12"/>
+  <circle cx="160" cy="560" r="210" fill="#41bfea" opacity=".16"/>
+  <rect x="70" y="58" width="1060" height="514" rx="46" fill="#fff" opacity=".72"/>
+  <text x="92" y="116" fill="#111" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="8">NOVACREATOR STUDIO</text>
+  <rect x="890" y="80" width="178" height="54" rx="27" fill="#dcf5df"/>
+  <text x="925" y="116" fill="#176b3a" font-family="Arial, sans-serif" font-size="22" font-weight="700">Almaty</text>
+  <text x="92" y="285" fill="#080808" font-family="Arial, sans-serif" font-size="76" font-weight="900" letter-spacing="-5">
+    <tspan x="92" dy="0">SEO, websites</tspan>
+    <tspan x="92" dy="86">and Google Ads</tspan>
+  </text>
+  <text x="92" y="454" fill="#111" opacity=".62" font-family="Arial, sans-serif" font-size="29" font-weight="600">
+    <tspan x="92" dy="0">Marketing studio for clear digital growth:</tspan>
+    <tspan x="92" dy="42">strategy, development, analytics and launch.</tspan>
+  </text>
+  <g font-family="Arial, sans-serif" font-size="24" font-weight="800" fill="#111">
+    <rect x="92" y="505" width="94" height="54" rx="20" fill="#f7f4ed"/>
+    <text x="116" y="540">SEO</text>
+    <rect x="204" y="505" width="248" height="54" rx="20" fill="#f7f4ed"/>
+    <text x="228" y="540">Web development</text>
+    <rect x="470" y="505" width="166" height="54" rx="20" fill="#f7f4ed"/>
+    <text x="494" y="540">Google Ads</text>
+  </g>
+</svg>

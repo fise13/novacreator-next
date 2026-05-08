@@ -8,7 +8,7 @@ export default function NotFound() {
       </p>
       <h1 className="mt-4 font-radio text-4xl font-black">Страница не найдена</h1>
       <p className="mt-4 max-w-xl text-text-secondary">
-        Раздел будет восстановлен в одной из следующих фаз миграции.
+        Раздел временно недоступен или был перенесён на новый адрес.
       </p>
       <Link
         href="/"
