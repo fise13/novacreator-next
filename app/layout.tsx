@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Inter, Source_Serif_4 } from "next/font/google";
 import Script from "next/script";
+import { absoluteUrl, alternateLanguages } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
@@ -41,16 +42,18 @@ export const metadata: Metadata = {
   },
   description: siteConfig.defaultDescription,
   alternates: {
-    canonical: siteConfig.url,
-    languages: {
-      ru: siteConfig.url,
-      en: `${siteConfig.url}/en`,
-      "x-default": siteConfig.url,
-    },
+    canonical: absoluteUrl("/", "ru"),
+    languages: alternateLanguages("/"),
   },
   icons: {
-    icon: "/icon.png",
-    apple: "/icon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
   manifest: "/manifest.webmanifest",
   openGraph: {

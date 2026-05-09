@@ -41,12 +41,12 @@ export default async function CalculatorPage({
               {isEn ? "Calculator" : "Калькулятор"}
             </p>
             <h1 data-gsap="reveal" className="mt-4 max-w-5xl text-balance font-radio text-4xl font-black leading-[0.95] tracking-[-0.08em] min-[380px]:text-5xl sm:mt-5 sm:text-7xl lg:text-8xl">
-              {isEn ? "Plan your digital project" : "Соберите формат проекта"}
+              {isEn ? "Estimate your project budget" : "Рассчитайте стоимость проекта"}
             </h1>
             <p data-gsap="reveal" className="mt-5 max-w-3xl text-base font-medium leading-7 text-black/60 dark:text-white/90 sm:mt-6 sm:text-xl sm:leading-8">
               {isEn
-                ? "Choose service, complexity and add-ons. The planner shows the recommended project format before a detailed brief."
-                : "Выберите услугу, сложность и дополнительные опции. Планер покажет подходящий формат проекта до детального брифа."}
+                ? "Choose SEO, development, ads or iOS, adjust the key parameters and see an approximate budget in KZT, RUB or USD."
+                : "Выберите SEO, разработку, рекламу или iOS, настройте параметры и получите ориентир бюджета в KZT, RUB или USD."}
             </p>
           </div>
         </section>

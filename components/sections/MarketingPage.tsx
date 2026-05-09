@@ -187,7 +187,7 @@ export async function MarketingPage({ locale, pageKey }: MarketingPageProps) {
       )}
 
       {section.form === "contact" && (
-        <form data-gsap="soft-scale" className="mt-7 grid gap-4 rounded-[1.5rem] border border-black/10 bg-[#dcf5df] p-5 text-black shadow-[0_18px_70px_rgba(0,0,0,0.06)] dark:!border-white/12 dark:!bg-[#0d1513] dark:!text-white dark:shadow-[0_22px_80px_rgba(0,0,0,0.35)]">
+        <form action="/api/contact" method="post" data-gsap="soft-scale" className="mt-7 grid gap-4 rounded-[1.5rem] border border-black/10 bg-[#dcf5df] p-5 text-black shadow-[0_18px_70px_rgba(0,0,0,0.06)] dark:!border-white/12 dark:!bg-[#0d1513] dark:!text-white dark:shadow-[0_22px_80px_rgba(0,0,0,0.35)]">
           <input type="hidden" name="type" value="contact" />
           <input type="hidden" name="form_name" value="Contact Page Form" />
           <input className="hidden" name="website" tabIndex={-1} autoComplete="off" aria-label="Website" />

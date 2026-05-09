@@ -48,6 +48,7 @@ export const staticSeoRoutes: SeoRoute[] = [
   { path: "/calculator", changeFrequency: "monthly", priority: 0.65 },
   { path: "/faq", changeFrequency: "monthly", priority: 0.65 },
   { path: "/contact", changeFrequency: "monthly", priority: 0.75 },
+  { path: "/tabs", changeFrequency: "yearly", priority: 0.2 },
   { path: "/vacancies", changeFrequency: "monthly", priority: 0.45 },
   { path: "/privacy", changeFrequency: "yearly", priority: 0.25 },
 ];

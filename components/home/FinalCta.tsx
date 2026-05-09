@@ -1,6 +1,7 @@
 "use client";
 
 import { Mail, MapPin, MessageCircle, Send } from "lucide-react";
+import { useState, type FormEvent } from "react";
 import type { HomeContent } from "./home-content";
 
 const phoneRegions = [
@@ -37,11 +38,48 @@ export function FinalCta({
   content: HomeContent;
   variant?: "home" | "page";
 }) {
+  const [submitState, setSubmitState] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [submitError, setSubmitError] = useState("");
   const isEn = content.contact.eyebrow === "Contact";
   const phone = content.contact.channels[0];
   const email = content.contact.channels[1];
   const whatsapp = content.contact.channels[2];
   const telegram = content.contact.channels[3];
+  const isSending = submitState === "sending";
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const countryCode = String(formData.get("country_code") ?? "").trim();
+    const phoneNumber = String(formData.get("phone") ?? "").trim();
+
+    formData.set("phone_full", `${countryCode} ${phoneNumber}`.trim());
+    setSubmitState("sending");
+    setSubmitError("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+        method: "POST",
+      });
+      const result = await response.json().catch(() => null) as { error?: string } | null;
+
+      if (!response.ok) {
+        throw new Error(result?.error || "Contact form request failed");
+      }
+
+      form.reset();
+      setSubmitState("success");
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "");
+      setSubmitState("error");
+    }
+  };
 
   return (
     <section id="contact-form" className={`relative overflow-hidden px-3 text-black dark:text-white sm:px-4 ${variant === "page" ? "pb-20 pt-4 sm:pb-24 sm:pt-6" : "py-14 sm:py-20"}`}>
@@ -116,7 +154,10 @@ export function FinalCta({
           </div>
 
           <form
+            action="/api/contact"
             data-gsap="soft-scale"
+            method="post"
+            onSubmit={handleSubmit}
             className="relative overflow-hidden rounded-[1.25rem] border border-black/10 bg-[#dcf5df] p-4 text-black shadow-[0_18px_70px_rgba(0,0,0,0.08)] dark:!border-white/12 dark:!bg-[#0d1513] dark:!text-white dark:shadow-[0_22px_80px_rgba(0,0,0,0.35)] sm:p-7"
           >
             <h3 className="text-2xl font-black tracking-[-0.05em] text-black dark:!text-white">
@@ -196,12 +237,23 @@ export function FinalCta({
                   </label>
                 </div>
                 <button
+                  disabled={isSending}
                   type="submit"
-                  className="inline-flex h-12 items-center justify-center rounded-xl bg-[#ff7b6f] px-6 text-base font-bold text-white transition hover:bg-[#ff5a45]"
+                  className="inline-flex h-12 items-center justify-center rounded-xl bg-[#ff7b6f] px-6 text-base font-bold text-white transition hover:bg-[#ff5a45] disabled:cursor-not-allowed disabled:opacity-70"
                 >
-                  {isEn ? "Send" : "Отправить"}
+                  {isSending ? (isEn ? "Sending..." : "Отправляем...") : isEn ? "Send" : "Отправить"}
                 </button>
               </div>
+              {submitState === "success" && (
+                <p className="rounded-xl border border-emerald-500/20 bg-emerald-500/10 px-4 py-3 text-sm font-bold text-emerald-700 dark:text-emerald-200">
+                  {isEn ? "Request sent. We will contact you soon." : "Заявка отправлена. Скоро свяжемся с вами."}
+                </p>
+              )}
+              {submitState === "error" && (
+                <p className="rounded-xl border border-[#ff5a45]/25 bg-[#ff5a45]/10 px-4 py-3 text-sm font-bold text-[#d63d2a] dark:text-[#ffb0a6]">
+                  {submitError || (isEn ? "Could not send the request. Please try again or write to us directly." : "Не удалось отправить заявку. Попробуйте еще раз или напишите нам напрямую.")}
+                </p>
+              )}
             </div>
           </form>
         </div>

@@ -7,11 +7,22 @@ import { PremiumNavbar } from "@/components/home/PremiumNavbar";
 import { SmoothScroll } from "@/components/home/SmoothScroll";
 import { getHomeContent, type HomeLocale } from "@/components/home/home-content";
 import { PremiumTabs, type PremiumTabItem } from "@/components/ui/PremiumTabs";
+import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Premium Tabs",
-  description: "A polished Framer Motion tab navigation and content transition system.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  return createSeoMetadata({
+    locale,
+    path: "/tabs",
+    title: "Premium Tabs",
+    description: "A polished Framer Motion tab navigation and content transition system.",
+  });
+}
 
 const tabItems: PremiumTabItem[] = [
   {

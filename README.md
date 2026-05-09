@@ -18,6 +18,18 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+## Contact Form Email
+
+Forms send requests through `POST /api/contact` and deliver them by SMTP.
+
+Create `.env.local` from `.env.example` and fill in the SMTP credentials:
+
+```bash
+cp .env.example .env.local
+```
+
+For iCloud Mail, use an app-specific password for `SMTP_PASS`. The default recipient is `victhewise@icloud.com`.
+
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## Learn More
