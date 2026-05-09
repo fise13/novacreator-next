@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { GsapHomeAnimations } from "@/components/home/GsapHomeAnimations";
 import { HomeFooter } from "@/components/home/HomeFooter";
+import { MotorLandPreview } from "@/components/home/MotorLandPreview";
 import { PremiumNavbar } from "@/components/home/PremiumNavbar";
 import { SmoothScroll } from "@/components/home/SmoothScroll";
 import { getHomeContent, type HomeLocale } from "@/components/home/home-content";
@@ -312,18 +313,18 @@ export default async function PortfolioDetailPage({
       <SmoothScroll />
       <GsapHomeAnimations />
       <PremiumNavbar content={homeContent} locale={normalizedLocale} />
-      <main id="main-content" className="px-4 pb-20 pt-36">
+      <main id="main-content" className="px-3 pb-16 pt-28 sm:px-4 sm:pb-20 sm:pt-36">
         <article className="mx-auto max-w-7xl">
-          <Link href="/portfolio" className="inline-flex items-center gap-2 text-sm font-bold text-black/50 transition hover:text-[#ff5a45] dark:text-white/50">
+          <Link href="/portfolio" className="inline-flex items-center gap-2 text-sm font-bold text-black/60 transition hover:text-[#ff5a45] dark:text-white/90">
             <ArrowLeft className="h-4 w-4" />
             {locale === "en" ? "Back to portfolio" : "Назад в портфолио"}
           </Link>
 
-          <div data-gsap="reveal" className="relative mt-8 overflow-hidden rounded-[2rem] border border-black/10 bg-white/75 p-6 shadow-[0_20px_70px_rgba(0,0,0,0.05)] backdrop-blur dark:border-white/10 dark:bg-white/[0.05] sm:p-10">
+          <div data-gsap="reveal" className="relative mt-6 overflow-hidden rounded-[1.55rem] border border-black/10 bg-white/75 p-5 shadow-[0_20px_70px_rgba(0,0,0,0.05)] backdrop-blur dark:border-white/12 dark:bg-[#171a22] sm:mt-8 sm:rounded-[2rem] sm:p-10">
             <div className="pointer-events-none absolute right-0 top-0 h-72 w-72 rounded-full bg-[#ff5a45]/10 blur-3xl" />
             <p className="relative text-xs font-bold uppercase tracking-[0.28em] text-[#ff5a45]">{project.kicker}</p>
-            <h1 className="relative mt-4 font-radio text-5xl font-black tracking-[-0.08em] sm:text-7xl">{project.title}</h1>
-            <p className="relative mt-6 max-w-3xl text-lg font-medium leading-8 text-black/60 dark:text-white/55">{project.intro}</p>
+            <h1 className="relative mt-4 font-radio text-4xl font-black leading-[0.98] tracking-[-0.08em] sm:text-7xl">{project.title}</h1>
+            <p className="relative mt-5 max-w-3xl text-base font-semibold leading-7 text-black/62 dark:text-white/90 sm:mt-6 sm:text-lg sm:leading-8">{project.intro}</p>
             <a
               href={project.href}
               target="_blank"
@@ -335,37 +336,45 @@ export default async function PortfolioDetailPage({
             </a>
           </div>
 
+          {slug === "motor-land" && (
+            <section data-gsap="soft-scale" className="mt-6 overflow-hidden rounded-[1.55rem] border border-black/10 bg-[#f1efe8] p-3 shadow-[0_20px_70px_rgba(0,0,0,0.06)] dark:border-white/10 dark:bg-[#10131a] sm:rounded-[2rem] sm:p-5">
+              <div className="min-h-[430px]">
+                <MotorLandPreview />
+              </div>
+            </section>
+          )}
+
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             {[
               [locale === "en" ? "Challenge" : "Задача", project.challenge],
               [locale === "en" ? "Solution" : "Решение", project.solution],
               [locale === "en" ? "Outcome" : "Результат", project.outcome],
             ].map(([title, text]) => (
-              <section key={title} data-gsap="reveal" className="rounded-[1.5rem] border border-black/10 bg-white/75 p-5 shadow-[0_14px_42px_rgba(0,0,0,0.04)] dark:border-white/10 dark:bg-white/[0.05]">
+              <section key={title} data-gsap="reveal" className="rounded-[1.5rem] border border-black/10 bg-white/75 p-5 shadow-[0_14px_42px_rgba(0,0,0,0.04)] dark:border-white/12 dark:bg-[#171a22]">
                 <h2 className="text-xl font-bold tracking-[-0.04em]">{title}</h2>
-                <p className="mt-3 text-sm font-medium leading-6 text-black/55 dark:text-white/50">{text}</p>
+                <p className="mt-3 text-sm font-semibold leading-6 text-black/62 dark:text-white/90">{text}</p>
               </section>
             ))}
           </div>
 
           <div className="mt-6 grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
-            <section data-gsap="reveal" className="rounded-[1.5rem] border border-black/10 bg-white/75 p-6 shadow-[0_14px_42px_rgba(0,0,0,0.04)] dark:border-white/10 dark:bg-white/[0.05]">
+            <section data-gsap="reveal" className="rounded-[1.5rem] border border-black/10 bg-white/75 p-6 shadow-[0_14px_42px_rgba(0,0,0,0.04)] dark:border-white/12 dark:bg-[#171a22]">
               <h2 className="font-radio text-3xl font-black tracking-[-0.06em]">
                 {locale === "en" ? "Stack and scope" : "Стек и объём"}
               </h2>
               <div className="mt-5 flex flex-wrap gap-2">
                 {project.stack.map((item) => (
-                  <span key={item} className="rounded-full border border-black/10 bg-white px-3 py-1.5 text-xs font-bold text-black/55 dark:border-white/10 dark:bg-white/[0.06] dark:text-white/55">
+                  <span key={item} className="rounded-full border border-black/10 bg-white px-3 py-1.5 text-xs font-bold text-black/62 dark:border-white/12 dark:bg-white/[0.08] dark:text-white/90">
                     {item}
                   </span>
                 ))}
               </div>
             </section>
-            <section data-gsap="reveal" className="rounded-[1.5rem] border border-black/10 bg-white/75 p-6 shadow-[0_14px_42px_rgba(0,0,0,0.04)] dark:border-white/10 dark:bg-white/[0.05]">
+            <section data-gsap="reveal" className="rounded-[1.5rem] border border-black/10 bg-white/75 p-6 shadow-[0_14px_42px_rgba(0,0,0,0.04)] dark:border-white/12 dark:bg-[#171a22]">
               <h2 className="font-radio text-3xl font-black tracking-[-0.06em]">
                 {locale === "en" ? "Growth opportunities" : "Куда развивать дальше"}
               </h2>
-              <ul className="mt-5 grid gap-3 text-sm font-medium leading-6 text-black/55 dark:text-white/50">
+              <ul className="mt-5 grid gap-3 text-sm font-semibold leading-6 text-black/62 dark:text-white/90">
                 {project.next.map((item) => (
                   <li key={item} className="flex gap-2">
                     <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#ff5a45]" />
@@ -376,7 +385,7 @@ export default async function PortfolioDetailPage({
             </section>
           </div>
 
-          <section data-gsap="reveal" className="mt-6 rounded-[1.5rem] bg-black p-6 text-white dark:bg-white dark:text-black">
+          <section data-gsap="reveal" className="mt-6 rounded-[1.5rem] bg-black p-6 text-white dark:bg-[#161a22] dark:text-white">
             <h2 className="font-radio text-3xl font-black tracking-[-0.06em]">
               {locale === "en" ? "Want a case like this?" : "Хотите похожий проект?"}
             </h2>

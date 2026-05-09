@@ -49,7 +49,8 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/icon.svg",
+    icon: "/icon.png",
+    apple: "/icon.png",
   },
   manifest: "/manifest.webmanifest",
   openGraph: {

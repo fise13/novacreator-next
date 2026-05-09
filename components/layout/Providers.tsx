@@ -1,10 +1,10 @@
 "use client";
 
-import { ThemeProvider } from "next-themes";
 import { NextIntlClientProvider } from "next-intl";
 import { usePathname } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef } from "react";
 import { Toaster } from "sonner";
+import { ThemeProvider } from "./theme";
 
 type ProvidersProps = {
   children: React.ReactNode;
@@ -61,7 +61,7 @@ function ScrollToTopOnRouteChange() {
 export function Providers({ children, locale, messages }: ProvidersProps) {
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <ThemeProvider>
         <ScrollToTopOnRouteChange />
         {children}
         <Toaster richColors position="top-right" />

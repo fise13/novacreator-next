@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { siteConfig } from "@/lib/site-config";
-import logoMark from "@/assets/logo-mark.png";
+import logoMark from "@/assets/logo-mark-transparent.png";
 import type { HomeContent, HomeLocale } from "./home-content";
 
 export function HomeFooter({
@@ -19,15 +19,15 @@ export function HomeFooter({
         <div className="grid gap-10 md:grid-cols-[1.4fr_0.8fr_0.8fr_0.9fr]">
           <div>
             <div className="flex items-center gap-3">
-              <span className="grid h-10 w-10 place-items-center overflow-hidden rounded-full bg-black shadow-[0_10px_30px_rgba(0,0,0,0.12)] dark:bg-white">
-                <Image src={logoMark} alt="" className="h-7 w-7 rounded-full object-cover" />
+              <span className="grid h-14 w-14 shrink-0 place-items-center overflow-visible">
+                <Image src={logoMark} alt="" className="h-14 w-14 object-contain drop-shadow-[0_6px_14px_rgba(65,191,234,0.22)]" />
               </span>
-              <span className="font-radio text-2xl font-black tracking-[-0.07em]">{siteConfig.name}</span>
+              <span className="font-radio text-2xl font-black tracking-[-0.07em] sm:text-3xl">{siteConfig.name}</span>
             </div>
-            <p className="mt-5 max-w-sm text-sm leading-7 text-black/55 dark:text-white/55">
+            <p className="mt-5 max-w-sm text-sm font-medium leading-7 text-black/62 dark:text-white/90">
               {content.footer.description}
             </p>
-            <div className="mt-6 flex flex-wrap gap-4 text-sm font-semibold text-black/45 dark:text-white/45">
+            <div className="mt-6 flex flex-wrap gap-4 text-sm font-semibold text-black/66 dark:text-white/90">
               <a className="transition hover:text-[#ff5a45]" href={siteConfig.social.linkedin}>
                 LinkedIn
               </a>
@@ -44,7 +44,7 @@ export function HomeFooter({
             <h3 className="text-sm font-bold text-black dark:text-white">
               {content.footer.servicesTitle}
             </h3>
-            <div className="mt-5 grid gap-3 text-sm font-medium text-black/50 dark:text-white/50">
+            <div className="mt-5 grid gap-3 text-sm font-semibold text-black/60 dark:text-white/90">
               {content.footer.services.map((item) => (
                 <a key={item.href} className="transition hover:text-[#ff5a45]" href={localizedHref(item.href)}>
                   {item.label}
@@ -57,7 +57,7 @@ export function HomeFooter({
             <h3 className="text-sm font-bold text-black dark:text-white">
               {content.footer.companyTitle}
             </h3>
-            <div className="mt-5 grid gap-3 text-sm font-medium text-black/50 dark:text-white/50">
+            <div className="mt-5 grid gap-3 text-sm font-semibold text-black/60 dark:text-white/90">
               {content.footer.company.map((item) => (
                 <a key={item.href} className="transition hover:text-[#ff5a45]" href={localizedHref(item.href)}>
                   {item.label}
@@ -70,7 +70,7 @@ export function HomeFooter({
             <h3 className="text-sm font-bold text-black dark:text-white">
               {content.footer.contactsTitle}
             </h3>
-            <div className="mt-5 grid gap-3 text-sm font-medium text-black/50 dark:text-white/50">
+            <div className="mt-5 grid gap-3 text-sm font-semibold text-black/60 dark:text-white/90">
               <a className="transition hover:text-[#ff5a45]" href={siteConfig.contacts.phoneHref}>
                 {siteConfig.contacts.phone}
               </a>
@@ -88,7 +88,7 @@ export function HomeFooter({
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col justify-between gap-4 border-t border-black/10 pt-6 text-xs font-medium text-black/35 dark:border-white/10 dark:text-white/35 md:flex-row">
+        <div className="mt-12 flex flex-col justify-between gap-4 border-t border-black/10 pt-6 text-xs font-semibold text-black/62 dark:border-white/10 dark:text-white/90 md:flex-row">
           <p>
             © {new Date().getFullYear()} {siteConfig.name}. {content.footer.rights}
           </p>

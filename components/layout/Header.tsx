@@ -5,7 +5,6 @@ import { Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { LangSwitcher } from "./LangSwitcher";
-import { ThemeToggle } from "./ThemeToggle";
 
 const navItems = [
   { href: "/", label: "home" },
@@ -53,7 +52,6 @@ export function Header() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <LangSwitcher />
-          <ThemeToggle />
         </div>
 
         <Dialog.Root>
@@ -86,7 +84,6 @@ export function Header() {
               </div>
               <div className="mt-8 flex items-center gap-3">
                 <LangSwitcher />
-                <ThemeToggle />
               </div>
             </Dialog.Content>
           </Dialog.Portal>

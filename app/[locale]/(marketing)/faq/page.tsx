@@ -135,16 +135,16 @@ export default async function FaqPage({
       <Script id={`faq-json-ld-${normalizedLocale}`} type="application/ld+json" strategy="afterInteractive">
         {JSON.stringify(faqJsonLd)}
       </Script>
-      <main id="main-content" className="relative pt-28">
-        <section className="relative overflow-hidden px-4 py-24 sm:py-32">
+      <main id="main-content" className="relative pt-24 sm:pt-28">
+        <section className="relative overflow-hidden px-3 py-16 sm:px-4 sm:py-32">
           <div data-gsap-parallax data-depth="42" className="pointer-events-none absolute left-[8%] top-28 h-32 w-32 rounded-full bg-[#ff5a45]/10 blur-2xl" />
           <div data-gsap-parallax data-depth="-38" className="pointer-events-none absolute right-[10%] top-40 h-44 w-44 rounded-full bg-white/50 blur-2xl dark:bg-white/[0.07]" />
           <div className="relative mx-auto max-w-7xl">
-            <p data-gsap="clip" className="text-sm font-semibold uppercase tracking-[0.28em] text-[#ff5a45]">FAQ</p>
-            <h1 data-gsap="clip" className="mt-5 max-w-5xl text-balance font-radio text-6xl font-black tracking-[-0.08em] sm:text-8xl">
+            <p data-gsap="clip" className="text-xs font-semibold uppercase tracking-[0.24em] text-[#ff5a45] sm:text-sm sm:tracking-[0.28em]">FAQ</p>
+            <h1 data-gsap="clip" className="mt-4 max-w-5xl text-balance font-radio text-4xl font-black leading-[0.95] tracking-[-0.08em] min-[380px]:text-5xl sm:mt-5 sm:text-8xl">
               {isEn ? "Questions that usually decide the project" : "Вопросы, которые обычно решают проект"}
             </h1>
-            <p data-gsap="soft-scale" className="mt-6 max-w-3xl text-xl font-medium leading-8 text-black/60 dark:text-white/58">
+            <p data-gsap="soft-scale" className="mt-5 max-w-3xl text-base font-semibold leading-7 text-black/62 dark:text-white/90 sm:mt-6 sm:text-xl sm:leading-8">
               {isEn
                 ? "No generic support page. Here are the answers we usually explain on first calls: timing, SEO, ads, development and what happens after launch."
                 : "Это не справочная страница ради галочки. Здесь ответы, которые мы обычно объясняем на первых созвонах: сроки, SEO, реклама, разработка и что происходит после запуска."}
@@ -152,17 +152,17 @@ export default async function FaqPage({
           </div>
         </section>
 
-        <section className="mx-auto grid max-w-7xl gap-6 px-4 pb-24 lg:grid-cols-[0.34fr_0.66fr]">
-          <aside data-gsap="soft-scale" data-gsap-pin-sidebar className="h-fit rounded-[2rem] border border-black/10 bg-white/75 p-5 shadow-[0_18px_70px_rgba(0,0,0,0.05)] backdrop-blur dark:border-white/10 dark:bg-white/[0.05]">
-            <p className="text-xs font-bold uppercase tracking-[0.24em] text-black/40 dark:text-white/40">
+        <section className="mx-auto grid max-w-7xl gap-6 px-3 pb-20 sm:px-4 sm:pb-24 lg:grid-cols-[0.34fr_0.66fr]">
+          <aside data-gsap="soft-scale" data-gsap-pin-sidebar className="h-fit rounded-[1.5rem] border border-black/10 bg-white/75 p-4 shadow-[0_18px_70px_rgba(0,0,0,0.05)] backdrop-blur dark:border-white/12 dark:bg-[#171a22] sm:rounded-[2rem] sm:p-5">
+            <p className="text-xs font-bold uppercase tracking-[0.24em] text-black/64 dark:text-white/90">
               {isEn ? "Topics" : "Темы"}
             </p>
             <div className="mt-4 grid gap-2">
               {groups.map((group) => {
                 const Icon = group.icon;
                 return (
-                  <a key={group.label} href={`#${group.label}`} data-gsap="stagger-row" className="flex items-center gap-3 rounded-2xl border border-black/10 bg-white p-3 text-sm font-bold transition hover:border-[#ff5a45]/40 dark:border-white/10 dark:bg-white/[0.05]">
-                    <span className="grid h-9 w-9 place-items-center rounded-full bg-[#ffebe6] text-[#ff5a45] dark:bg-white/[0.08]">
+                  <a key={group.label} href={`#${group.label}`} data-gsap="stagger-row" className="flex items-center gap-3 rounded-2xl border border-black/10 bg-white p-3 text-sm font-bold transition hover:border-[#ff5a45]/40 dark:border-white/12 dark:bg-[#11141b]">
+                    <span className="grid h-9 w-9 place-items-center rounded-full bg-[#ffebe6] text-[#ff5a45] dark:bg-white/[0.1]">
                       <Icon className="h-4 w-4" />
                     </span>
                     {group.label}
@@ -170,8 +170,8 @@ export default async function FaqPage({
                 );
               })}
             </div>
-            <div className="mt-5 rounded-[1.4rem] bg-black p-5 text-white dark:bg-white dark:text-black">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] opacity-50">
+            <div className="mt-5 rounded-[1.4rem] bg-black p-5 text-white dark:bg-[#161a22] dark:text-white">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/82">
                 {isEn ? "No answer?" : "Нет ответа?"}
               </p>
               <p className="mt-3 text-lg font-black tracking-[-0.04em]">
@@ -185,26 +185,26 @@ export default async function FaqPage({
           </aside>
 
           <div className="space-y-6">
-            <article data-gsap="clip" className="rounded-[2.4rem] border border-black/10 bg-white/80 p-7 shadow-[0_24px_90px_rgba(0,0,0,0.06)] backdrop-blur dark:border-white/10 dark:bg-white/[0.05] sm:p-10">
+            <article data-gsap="clip" className="rounded-[1.6rem] border border-black/10 bg-white/80 p-5 shadow-[0_24px_90px_rgba(0,0,0,0.06)] backdrop-blur dark:border-white/12 dark:bg-[#171a22] sm:rounded-[2.4rem] sm:p-10">
               <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#ff5a45]">
                 {isEn ? "Featured answer" : "Главный ответ"}
               </p>
-              <h2 className="mt-4 font-radio text-4xl font-black tracking-[-0.06em] sm:text-6xl">{featured[0]}</h2>
-              <p className="mt-5 text-lg font-medium leading-8 text-black/58 dark:text-white/55">{featured[1]}</p>
+              <h2 className="mt-4 font-radio text-3xl font-black leading-[0.98] tracking-[-0.06em] sm:text-6xl">{featured[0]}</h2>
+              <p className="mt-4 text-base font-semibold leading-7 text-black/62 dark:text-white/90 sm:mt-5 sm:text-lg sm:leading-8">{featured[1]}</p>
             </article>
 
             {groups.map((group) => (
               <section key={group.label} id={group.label} className="scroll-mt-32">
                 <div data-gsap="draw-line" className="mb-4 h-px w-full origin-left bg-black/15 dark:bg-white/15" />
-                <h2 data-gsap="clip" className="mb-4 font-radio text-4xl font-black tracking-[-0.07em] sm:text-5xl">{group.label}</h2>
+                <h2 data-gsap="clip" className="mb-4 font-radio text-3xl font-black tracking-[-0.07em] sm:text-5xl">{group.label}</h2>
                 <div className="grid gap-3">
                   {group.questions.map(([question, answer], index) => (
-                    <details key={question} data-gsap="stagger-row" data-gsap-faq-detail className="group rounded-[1.5rem] border border-black/10 bg-white/75 p-5 shadow-[0_12px_44px_rgba(0,0,0,0.04)] transition dark:border-white/10 dark:bg-white/[0.05]" open={index === 0}>
-                      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-black tracking-[-0.04em]">
+                    <details key={question} data-gsap="stagger-row" data-gsap-faq-detail className="group rounded-[1.3rem] border border-black/10 bg-white/75 p-4 shadow-[0_12px_44px_rgba(0,0,0,0.04)] transition dark:border-white/12 dark:bg-[#11141b] sm:rounded-[1.5rem] sm:p-5" open={index === 0}>
+                      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-black tracking-[-0.04em] sm:text-lg">
                         {question}
                         <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#ffebe6] text-[#ff5a45] transition group-open:rotate-45 dark:bg-white/[0.08]">+</span>
                       </summary>
-                      <p data-gsap-faq-answer className="mt-4 max-w-3xl overflow-hidden text-base font-medium leading-8 text-black/58 dark:text-white/55">{answer}</p>
+                      <p data-gsap-faq-answer className="mt-4 max-w-3xl overflow-hidden text-base font-semibold leading-8 text-black/62 dark:text-white/90">{answer}</p>
                     </details>
                   ))}
                 </div>

@@ -122,21 +122,21 @@ export default async function BlogPostPage({
       <SmoothScroll />
       <GsapHomeAnimations />
       <PremiumNavbar content={homeContent} locale={normalizedLocale} />
-      <main id="main-content" className="px-4 pb-20 pt-36">
+      <main id="main-content" className="px-3 pb-16 pt-28 sm:px-4 sm:pb-20 sm:pt-36">
         <article className="mx-auto max-w-4xl">
-          <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-bold text-black/50 transition hover:text-[#ff5a45] dark:text-white/50">
+          <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-bold text-black/60 transition hover:text-[#ff5a45] dark:text-white/90">
             <ArrowLeft className="h-4 w-4" />
             {locale === "en" ? "Back to blog" : "Назад в блог"}
           </Link>
 
-          <div data-gsap="reveal" className="relative mt-8 overflow-hidden rounded-[2rem] border border-black/10 bg-white/75 p-6 shadow-[0_20px_70px_rgba(0,0,0,0.05)] backdrop-blur dark:border-white/10 dark:bg-white/[0.05] sm:p-10">
+          <div data-gsap="reveal" className="relative mt-6 overflow-hidden rounded-[1.55rem] border border-black/10 bg-white/75 p-5 shadow-[0_20px_70px_rgba(0,0,0,0.05)] backdrop-blur dark:border-white/12 dark:bg-[#171a22] sm:mt-8 sm:rounded-[2rem] sm:p-10">
             <div className="pointer-events-none absolute right-0 top-0 h-72 w-72 rounded-full bg-[#ff5a45]/10 blur-3xl" />
             <p className="relative text-xs font-bold uppercase tracking-[0.28em] text-[#ff5a45]">{post.category}</p>
-            <h1 className="relative mt-4 font-radio text-5xl font-black tracking-[-0.08em] sm:text-7xl">{post.title}</h1>
-            <p className="relative mt-6 text-lg font-medium leading-8 text-black/60 dark:text-white/55">{post.excerpt}</p>
+            <h1 className="relative mt-4 font-radio text-4xl font-black leading-[0.98] tracking-[-0.08em] sm:text-7xl">{post.title}</h1>
+            <p className="relative mt-5 text-base font-semibold leading-7 text-black/62 dark:text-white/90 sm:mt-6 sm:text-lg sm:leading-8">{post.excerpt}</p>
           </div>
 
-          <div data-gsap="reveal" className="mt-8 rounded-[1.5rem] border border-black/10 bg-white/75 p-6 text-base font-medium leading-8 text-black/58 shadow-[0_14px_42px_rgba(0,0,0,0.04)] dark:border-white/10 dark:bg-white/[0.05] dark:text-white/55 sm:p-8">
+          <div data-gsap="reveal" className="mt-8 rounded-[1.5rem] border border-black/10 bg-white/75 p-6 text-base font-semibold leading-8 text-black/62 shadow-[0_14px_42px_rgba(0,0,0,0.04)] dark:border-white/12 dark:bg-[#171a22] dark:text-white/90 sm:p-8">
             <p>
               {locale === "en"
                 ? "The full article content will be migrated from data/blog.json into MDX or a content store. This page keeps the SEO route, localized metadata direction and article layout ready for the remaining content import."
@@ -144,20 +144,20 @@ export default async function BlogPostPage({
             </p>
           </div>
 
-          <section data-gsap="reveal" className="mt-6 rounded-[1.5rem] border border-black/10 bg-white/75 p-6 shadow-[0_14px_42px_rgba(0,0,0,0.04)] dark:border-white/10 dark:bg-white/[0.05] sm:p-8">
+          <section data-gsap="reveal" className="mt-6 rounded-[1.5rem] border border-black/10 bg-white/75 p-6 shadow-[0_14px_42px_rgba(0,0,0,0.04)] dark:border-white/12 dark:bg-[#171a22] sm:p-8">
             <h2 className="font-radio text-3xl font-black tracking-[-0.06em]">
               {locale === "en" ? "Key takeaways" : "Главные выводы"}
             </h2>
-            <ul className="mt-5 grid gap-3 text-sm font-medium leading-6 text-black/55 dark:text-white/50 sm:grid-cols-2">
+            <ul className="mt-5 grid gap-3 text-sm font-semibold leading-6 text-black/62 dark:text-white/90 sm:grid-cols-2">
               {post.takeaways.map((item) => (
-                <li key={item} className="rounded-2xl border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.05]">
+                <li key={item} className="rounded-2xl border border-black/10 bg-white p-4 dark:border-white/12 dark:bg-[#11141b]">
                   {item}
                 </li>
               ))}
             </ul>
           </section>
 
-          <section data-gsap="reveal" className="mt-6 rounded-[1.5rem] bg-black p-6 text-white dark:bg-white dark:text-black">
+          <section data-gsap="reveal" className="mt-6 rounded-[1.5rem] bg-black p-6 text-white dark:bg-[#161a22] dark:text-white">
             <h2 className="font-radio text-3xl font-black tracking-[-0.06em]">
               {locale === "en" ? "Want this applied to your project?" : "Хотите применить это к своему проекту?"}
             </h2>

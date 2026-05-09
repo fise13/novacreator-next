@@ -33,17 +33,17 @@ export default async function CalculatorPage({
       <SmoothScroll />
       <GsapHomeAnimations />
       <PremiumNavbar content={content} locale={normalizedLocale} />
-      <main id="main-content" className="relative pt-28">
-        <section className="relative overflow-hidden px-4 py-24 sm:py-32">
+      <main id="main-content" className="relative pt-24 sm:pt-28">
+        <section className="relative overflow-hidden px-3 py-16 sm:px-4 sm:py-32">
           <div className="pointer-events-none absolute left-1/2 top-4 h-80 w-[min(900px,90vw)] -translate-x-1/2 rounded-full bg-[#ff5a45]/10 blur-3xl dark:bg-[#ff5a45]/15" />
           <div className="relative mx-auto max-w-7xl">
-            <p data-gsap="reveal" className="text-sm font-semibold uppercase tracking-[0.28em] text-[#ff5a45]">
+            <p data-gsap="reveal" className="text-xs font-semibold uppercase tracking-[0.24em] text-[#ff5a45] sm:text-sm sm:tracking-[0.28em]">
               {isEn ? "Calculator" : "Калькулятор"}
             </p>
-            <h1 data-gsap="reveal" className="mt-5 max-w-5xl text-balance font-radio text-5xl font-black tracking-[-0.08em] sm:text-7xl lg:text-8xl">
+            <h1 data-gsap="reveal" className="mt-4 max-w-5xl text-balance font-radio text-4xl font-black leading-[0.95] tracking-[-0.08em] min-[380px]:text-5xl sm:mt-5 sm:text-7xl lg:text-8xl">
               {isEn ? "Plan your digital project" : "Соберите формат проекта"}
             </h1>
-            <p data-gsap="reveal" className="mt-6 max-w-3xl text-lg font-medium leading-8 text-black/60 dark:text-white/58 sm:text-xl">
+            <p data-gsap="reveal" className="mt-5 max-w-3xl text-base font-medium leading-7 text-black/60 dark:text-white/90 sm:mt-6 sm:text-xl sm:leading-8">
               {isEn
                 ? "Choose service, complexity and add-ons. The planner shows the recommended project format before a detailed brief."
                 : "Выберите услугу, сложность и дополнительные опции. Планер покажет подходящий формат проекта до детального брифа."}

@@ -58,7 +58,7 @@ export function MetricsSection() {
               <p className="font-radio text-5xl font-black tracking-[-0.06em]">
                 <Counter value={metric.value} suffix={metric.suffix} />
               </p>
-              <p className="mt-6 text-sm leading-6 text-white/52">{metric.label}</p>
+              <p className="mt-6 text-sm leading-6 text-white/78">{metric.label}</p>
             </motion.div>
           ))}
         </div>

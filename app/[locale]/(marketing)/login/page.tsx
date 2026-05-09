@@ -40,16 +40,16 @@ export default async function LoginPage({
       <SmoothScroll />
       <GsapHomeAnimations />
       <PremiumNavbar content={homeContent} locale={normalizedLocale} />
-      <main id="main-content" className="px-4 pb-20 pt-36">
+      <main id="main-content" className="px-3 pb-16 pt-28 sm:px-4 sm:pb-20 sm:pt-36">
         <section className="mx-auto max-w-xl">
-          <div data-gsap="reveal" className="rounded-[2rem] border border-black/10 bg-white/75 p-6 shadow-[0_20px_70px_rgba(0,0,0,0.05)] backdrop-blur dark:border-white/10 dark:bg-white/[0.05] sm:p-8">
+          <div data-gsap="reveal" className="rounded-[1.55rem] border border-black/10 bg-white/75 p-5 shadow-[0_20px_70px_rgba(0,0,0,0.05)] backdrop-blur dark:border-white/10 dark:bg-[#171a22] sm:rounded-[2rem] sm:p-8">
             <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#ff5a45]">
               {isEn ? "Account" : "Аккаунт"}
             </p>
             <h1 className="mt-4 font-radio text-4xl font-black tracking-[-0.06em]">
               {isEn ? "Login" : "Вход"}
             </h1>
-            <p className="mt-3 text-sm font-medium leading-6 text-black/58 dark:text-white/55">
+            <p className="mt-3 text-sm font-medium leading-6 text-black/66 dark:text-white/90">
               {isEn
                 ? "The client cabinet is being prepared. For now, contact the team to access project materials."
                 : "Клиентский кабинет готовится. Пока напишите команде, чтобы получить доступ к материалам проекта."}

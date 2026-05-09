@@ -21,6 +21,23 @@ export function GsapHomeAnimations() {
 
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    const navDuration = isMobile ? 0.36 : 0.7;
+    const heroLineDuration = isMobile ? 0.52 : 0.9;
+    const heroFadeDuration = isMobile ? 0.38 : 0.72;
+    const revealDuration = isMobile ? 0.36 : 0.72;
+    const clipDuration = isMobile ? 0.42 : 0.8;
+    const driftDuration = isMobile ? 0.42 : 0.82;
+    const slideDuration = isMobile ? 0.34 : 0.68;
+    const rowDuration = isMobile ? 0.28 : 0.58;
+    const lineDuration = isMobile ? 0.36 : 0.75;
+    const revealStart = isMobile ? "top 94%" : "top 84%";
+    const clipStart = isMobile ? "top 95%" : "top 86%";
+    const rowStart = isMobile ? "top 96%" : "top 90%";
+    const revealEnd = isMobile ? "top 68%" : "top 58%";
+    const clipEnd = isMobile ? "top 66%" : "top 56%";
+    const rowEnd = isMobile ? "top 70%" : "top 62%";
+    const scrubSpeed = isMobile ? 0.16 : 0.28;
     const cleanups: Array<() => void> = [];
 
     if (reduceMotion) {
@@ -35,7 +52,7 @@ export function GsapHomeAnimations() {
       gsap.fromTo(
         "[data-gsap='nav']",
         { y: -18, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" },
+        { y: 0, opacity: 1, duration: navDuration, ease: "power3.out" },
       );
 
       gsap.fromTo(
@@ -59,10 +76,10 @@ export function GsapHomeAnimations() {
         {
           yPercent: 0,
           rotate: 0,
-          duration: 0.9,
+          duration: heroLineDuration,
           ease: "power4.out",
-          stagger: 0.06,
-          delay: 0.12,
+          stagger: isMobile ? 0.025 : 0.06,
+          delay: isMobile ? 0.04 : 0.12,
         },
       );
 
@@ -73,10 +90,10 @@ export function GsapHomeAnimations() {
           y: 0,
           opacity: 1,
           filter: "blur(0px)",
-          duration: 0.72,
+          duration: heroFadeDuration,
           ease: "power3.out",
-          stagger: 0.06,
-          delay: 0.45,
+          stagger: isMobile ? 0.025 : 0.06,
+          delay: isMobile ? 0.12 : 0.45,
         },
       );
 
@@ -88,12 +105,13 @@ export function GsapHomeAnimations() {
             y: 0,
             opacity: 1,
             filter: "blur(0px)",
-            duration: 0.72,
+            duration: revealDuration,
             ease: "power3.out",
             scrollTrigger: {
               trigger: element,
-              start: "top 84%",
-              once: true,
+              start: revealStart,
+              end: revealEnd,
+              scrub: scrubSpeed,
             },
           },
         );
@@ -107,12 +125,13 @@ export function GsapHomeAnimations() {
             clipPath: "inset(0 0 0% 0)",
             y: 0,
             opacity: 1,
-            duration: 0.8,
+            duration: clipDuration,
             ease: "power4.out",
             scrollTrigger: {
               trigger: element,
-              start: "top 86%",
-              once: true,
+              start: clipStart,
+              end: clipEnd,
+              scrub: scrubSpeed,
             },
           },
         );
@@ -127,12 +146,13 @@ export function GsapHomeAnimations() {
             y: 0,
             opacity: 1,
             filter: "blur(0px)",
-            duration: 0.72,
+            duration: revealDuration,
             ease: "power3.out",
             scrollTrigger: {
               trigger: element,
-              start: "top 84%",
-              once: true,
+              start: revealStart,
+              end: revealEnd,
+              scrub: scrubSpeed,
             },
           },
         );
@@ -146,12 +166,13 @@ export function GsapHomeAnimations() {
             y: 0,
             opacity: 1,
             rotate: 0,
-            duration: 0.82,
+            duration: driftDuration,
             ease: "power4.out",
             scrollTrigger: {
               trigger: element,
-              start: "top 82%",
-              once: true,
+              start: isMobile ? "top 94%" : "top 82%",
+              end: revealEnd,
+              scrub: scrubSpeed,
             },
           },
         );
@@ -166,13 +187,14 @@ export function GsapHomeAnimations() {
           {
             y: 0,
             opacity: 1,
-            duration: 0.68,
+            duration: slideDuration,
             ease: "power3.out",
-            stagger: 0.08,
+            stagger: isMobile ? 0.03 : 0.08,
             scrollTrigger: {
               trigger: element,
-              start: "top 84%",
-              once: true,
+              start: revealStart,
+              end: revealEnd,
+              scrub: scrubSpeed,
             },
           },
         );
@@ -185,12 +207,13 @@ export function GsapHomeAnimations() {
           {
             y: 0,
             opacity: 1,
-            duration: 0.58,
+            duration: rowDuration,
             ease: "power3.out",
             scrollTrigger: {
               trigger: element,
-              start: "top 90%",
-              once: true,
+              start: rowStart,
+              end: rowEnd,
+              scrub: scrubSpeed,
             },
           },
         );
@@ -203,12 +226,13 @@ export function GsapHomeAnimations() {
           {
             scaleX: 1,
             scaleY: 1,
-            duration: 0.75,
+            duration: lineDuration,
             ease: "power3.out",
             scrollTrigger: {
               trigger: element,
-              start: "top 88%",
-              once: true,
+              start: rowStart,
+              end: rowEnd,
+              scrub: scrubSpeed,
             },
           },
         );
@@ -332,7 +356,7 @@ export function GsapHomeAnimations() {
 
       gsap.utils.toArray<HTMLElement>("[data-gsap-speed]").forEach((element) => {
         const speed = Number(element.dataset.gsapSpeed ?? 1);
-        const offset = Number.isFinite(speed) ? (1 - speed) * 150 : 0;
+        const offset = Number.isFinite(speed) ? (1 - speed) * (isMobile ? 70 : 150) : 0;
 
         gsap.fromTo(
           element,
@@ -344,23 +368,28 @@ export function GsapHomeAnimations() {
               trigger: element.closest("section") ?? element,
               start: "top bottom",
               end: "bottom top",
-              scrub: 0.6,
+              scrub: isMobile ? 0.25 : 0.6,
             },
           },
         );
       });
 
-      gsap.fromTo(
-        "[data-gsap-bar]",
-        { scaleY: 0.08, transformOrigin: "bottom" },
-        {
-          scaleY: 1,
-          duration: 1,
-          ease: "power3.out",
-          stagger: 0.06,
-          delay: 0.9,
-        },
-      );
+      gsap.utils.toArray<HTMLElement>("[data-gsap-bar]").forEach((element) => {
+        gsap.fromTo(
+          element,
+          { scaleY: 0.08, transformOrigin: "bottom" },
+          {
+            scaleY: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: element.closest("section") ?? element,
+              start: isMobile ? "top 92%" : "top 82%",
+              end: isMobile ? "top 62%" : "top 52%",
+              scrub: scrubSpeed,
+            },
+          },
+        );
+      });
 
       gsap.utils.toArray<HTMLElement>("[data-gsap-counter]").forEach((element) => {
         const target = Number(element.dataset.gsapCounter);
@@ -373,11 +402,15 @@ export function GsapHomeAnimations() {
         const counter = { value: 0 };
         gsap.to(counter, {
           value: target,
-          duration: 1.4,
-          ease: "power3.out",
-          delay: 0.6,
+          ease: "none",
           onUpdate: () => {
             element.textContent = `${Math.round(counter.value)}${suffix}`;
+          },
+          scrollTrigger: {
+            trigger: element,
+            start: isMobile ? "top 94%" : "top 86%",
+            end: isMobile ? "top 72%" : "top 64%",
+            scrub: scrubSpeed,
           },
         });
       });

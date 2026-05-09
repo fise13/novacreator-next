@@ -64,7 +64,7 @@ export function BentoIntelligence() {
               <h3 className="relative mt-16 max-w-md text-2xl font-semibold tracking-tight">
                 {item.title}
               </h3>
-              <p className="relative mt-4 max-w-xl leading-7 text-white/56">
+              <p className="relative mt-4 max-w-xl leading-7 text-white/78">
                 {item.body}
               </p>
             </motion.article>

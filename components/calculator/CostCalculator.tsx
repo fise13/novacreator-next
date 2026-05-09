@@ -96,7 +96,7 @@ export function CostCalculator({ locale }: { locale: Locale }) {
 
           <div className="mt-8 space-y-8">
             <div>
-              <p className="mb-3 text-sm font-bold text-black/55 dark:text-white/55">
+              <p className="mb-3 text-sm font-bold text-black/64 dark:text-white/90">
                 {isEn ? "Service" : "Услуга"}
               </p>
               <div className="grid gap-3 sm:grid-cols-2">
@@ -108,7 +108,7 @@ export function CostCalculator({ locale }: { locale: Locale }) {
                     className={`rounded-2xl border p-4 text-left transition duration-300 hover:-translate-y-1 ${
                       service === key
                         ? "border-[#ff5a45] bg-[#ff5a45] text-white"
-                        : "border-black/10 bg-white text-black dark:border-white/10 dark:bg-white/[0.05] dark:text-white"
+                        : "border-black/10 bg-white text-black dark:border-white/10 dark:bg-[#171a22] dark:text-white"
                     }`}
                   >
                     <span className="text-sm font-black">{isEn ? serviceData[key].en : serviceData[key].ru}</span>
@@ -121,7 +121,7 @@ export function CostCalculator({ locale }: { locale: Locale }) {
             </div>
 
             <div>
-              <p className="mb-3 text-sm font-bold text-black/55 dark:text-white/55">
+              <p className="mb-3 text-sm font-bold text-black/64 dark:text-white/90">
                 {isEn ? "Complexity" : "Сложность"}
               </p>
               <div className="grid gap-3 md:grid-cols-3">
@@ -133,7 +133,7 @@ export function CostCalculator({ locale }: { locale: Locale }) {
                     className={`rounded-2xl border p-4 text-left transition duration-300 hover:-translate-y-1 ${
                       complexity === key
                         ? "border-black bg-black text-white dark:border-white dark:bg-white dark:text-black"
-                        : "border-black/10 bg-white text-black dark:border-white/10 dark:bg-white/[0.05] dark:text-white"
+                        : "border-black/10 bg-white text-black dark:border-white/10 dark:bg-[#171a22] dark:text-white"
                     }`}
                   >
                     <span className="text-sm font-black">{isEn ? complexityMultipliers[key].en : complexityMultipliers[key].ru}</span>
@@ -146,7 +146,7 @@ export function CostCalculator({ locale }: { locale: Locale }) {
             </div>
 
             <div>
-              <p className="mb-3 text-sm font-bold text-black/55 dark:text-white/55">
+              <p className="mb-3 text-sm font-bold text-black/64 dark:text-white/90">
                 {isEn ? "Add-ons" : "Дополнительно"}
               </p>
               <div className="grid gap-3 sm:grid-cols-2">
@@ -157,15 +157,15 @@ export function CostCalculator({ locale }: { locale: Locale }) {
                       key={item.key}
                       type="button"
                       onClick={() => toggleAddOn(item.key)}
-                      className="flex items-center justify-between rounded-2xl border border-black/10 bg-white p-4 text-left transition duration-300 hover:-translate-y-1 dark:border-white/10 dark:bg-white/[0.05]"
+                      className="flex items-center justify-between rounded-2xl border border-black/10 bg-white p-4 text-left transition duration-300 hover:-translate-y-1 dark:border-white/10 dark:bg-[#171a22]"
                     >
                       <span>
                         <span className="block text-sm font-black">{isEn ? item.en : item.ru}</span>
-                        <span className="mt-1 block text-xs font-semibold text-black/45 dark:text-white/45">
+                        <span className="mt-1 block text-xs font-semibold text-black/66 dark:text-white/90">
                           {isEn ? "adds scope" : "добавляет объём"}
                         </span>
                       </span>
-                      <span className={`grid h-7 w-7 place-items-center rounded-full ${active ? "bg-[#ff5a45] text-white" : "bg-black/5 text-black/30 dark:bg-white/10 dark:text-white/30"}`}>
+                      <span className={`grid h-7 w-7 place-items-center rounded-full ${active ? "bg-[#ff5a45] text-white" : "bg-black/5 text-black/66 dark:bg-white/10 dark:text-white/90"}`}>
                         {active && <Check className="h-4 w-4" />}
                       </span>
                     </button>
@@ -176,7 +176,7 @@ export function CostCalculator({ locale }: { locale: Locale }) {
           </div>
         </div>
 
-        <aside data-gsap="soft-scale" className="rounded-[2.25rem] bg-black p-7 text-white shadow-[0_24px_90px_rgba(0,0,0,0.16)] dark:bg-white dark:text-black sm:p-9">
+        <aside data-gsap="soft-scale" className="rounded-[2.25rem] bg-black p-7 text-white shadow-[0_24px_90px_rgba(0,0,0,0.16)] dark:bg-[#171a22] dark:text-white sm:p-9">
           <div className="flex items-center justify-between gap-4">
             <div>
               <p className="text-sm font-bold uppercase tracking-[0.22em] text-[#ff5a45]">

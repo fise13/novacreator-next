@@ -17,18 +17,24 @@ export const homeContent = {
   ru: {
     nav: {
       desktop: [
-        { label: "Главная", href: "/" },
         { label: "Портфолио", href: "/portfolio" },
         { label: "Услуги", href: "/services" },
         { label: "О нас", href: "/about" },
       ],
       burger: [
-        { label: "Главная", href: "/" },
         { label: "Портфолио", href: "/portfolio" },
         { label: "Услуги", href: "/services" },
         { label: "SEO", href: "/seo" },
         { label: "Google Ads", href: "/ads" },
+        { label: "Лендинги", href: "/landing-page-development" },
+        { label: "E-commerce", href: "/ecommerce-development" },
+        { label: "Корпоративные сайты", href: "/corporate-website-development" },
+        { label: "iOS-разработка", href: "/ios-razrabotka-swift-swiftui" },
+        { label: "Калькулятор", href: "/calculator" },
+        { label: "Блог", href: "/blog" },
+        { label: "FAQ", href: "/faq" },
         { label: "О нас", href: "/about" },
+        { label: "Контакты", href: "/contact" },
       ],
       cta: "Начать проект",
       burgerCta: "Связаться",
@@ -208,18 +214,24 @@ export const homeContent = {
   en: {
     nav: {
       desktop: [
-        { label: "Home", href: "/" },
         { label: "Portfolio", href: "/portfolio" },
         { label: "Services", href: "/services" },
         { label: "About", href: "/about" },
       ],
       burger: [
-        { label: "Home", href: "/" },
         { label: "Portfolio", href: "/portfolio" },
         { label: "Services", href: "/services" },
         { label: "SEO", href: "/seo" },
         { label: "Google Ads", href: "/ads" },
+        { label: "Landing pages", href: "/landing-page-development" },
+        { label: "E-commerce", href: "/ecommerce-development" },
+        { label: "Corporate sites", href: "/corporate-website-development" },
+        { label: "iOS development", href: "/ios-razrabotka-swift-swiftui" },
+        { label: "Calculator", href: "/calculator" },
+        { label: "Blog", href: "/blog" },
+        { label: "FAQ", href: "/faq" },
         { label: "About", href: "/about" },
+        { label: "Contact", href: "/contact" },
       ],
       cta: "Start project",
       burgerCta: "Contact",
