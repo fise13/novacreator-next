@@ -91,6 +91,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
+    google: siteConfig.verification.google || undefined,
     other: {
       "yandex-verification": siteConfig.verification.yandex,
     },

@@ -1,7 +1,10 @@
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import Script from "next/script";
 import { setRequestLocale } from "next-intl/server";
 import { getMarketingPageContent, type MarketingPageKey, type MarketingSection } from "@/lib/marketing-page-content";
+import { absoluteUrl, marketingPageRoutes } from "@/lib/seo";
+import { siteConfig } from "@/lib/site-config";
 import { GsapHomeAnimations } from "../home/GsapHomeAnimations";
 import { HomeFooter } from "../home/HomeFooter";
 import { MotorLandPreview } from "../home/MotorLandPreview";
@@ -22,6 +25,83 @@ export async function MarketingPage({ locale, pageKey }: MarketingPageProps) {
   const localizedHref = (href: string) =>
     locale === "en" && href.startsWith("/") ? `/en${href === "/" ? "" : href}` : href;
   const isEn = normalizedLocale === "en";
+  const pagePath = marketingPageRoutes[pageKey];
+  const pageUrl = absoluteUrl(pagePath, normalizedLocale);
+  const servicePageKeys = new Set<MarketingPageKey>([
+    "services",
+    "seo",
+    "ads",
+    "landing",
+    "ecommerce",
+    "corporate",
+    "ios",
+  ]);
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${pageUrl}#webpage`,
+        url: pageUrl,
+        name: content.title,
+        description: content.description,
+        inLanguage: normalizedLocale === "ru" ? "ru-KZ" : "en",
+        isPartOf: {
+          "@id": `${siteConfig.url}/#website`,
+        },
+        about: servicePageKeys.has(pageKey)
+          ? {
+              "@id": `${pageUrl}#service`,
+            }
+          : {
+              "@id": `${siteConfig.url}/#organization`,
+            },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${pageUrl}#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: isEn ? "Home" : "Главная",
+            item: absoluteUrl("/", normalizedLocale),
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: content.title,
+            item: pageUrl,
+          },
+        ],
+      },
+      ...(servicePageKeys.has(pageKey)
+        ? [
+            {
+              "@type": "Service",
+              "@id": `${pageUrl}#service`,
+              name: content.title,
+              description: content.description,
+              serviceType: content.eyebrow,
+              url: pageUrl,
+              provider: {
+                "@id": `${siteConfig.url}/#organization`,
+              },
+              areaServed: [
+                {
+                  "@type": "City",
+                  name: siteConfig.address.city,
+                },
+                {
+                  "@type": "Country",
+                  name: siteConfig.address.country,
+                },
+              ],
+            },
+          ]
+        : []),
+    ],
+  };
   const pricePattern =
     /(KZT|₸|USD|RUB|руб|доллар|from\s+\d[\d\s,.]*(KZT|USD|RUB|₸)|от\s+\d[\d\s,.]*(KZT|USD|RUB|₸|руб)|pricing|price|цена|цене|пакет|пакеты)/i;
   const isPriceLike = (...values: Array<string | undefined>) =>
@@ -284,6 +364,9 @@ export async function MarketingPage({ locale, pageKey }: MarketingPageProps) {
       <SmoothScroll />
       <GsapHomeAnimations />
       <PremiumNavbar content={homeContent} locale={normalizedLocale} />
+      <Script id={`marketing-json-ld-${normalizedLocale}-${pageKey}`} type="application/ld+json" strategy="afterInteractive">
+        {JSON.stringify(jsonLd)}
+      </Script>
       <main id="main-content" className="relative pt-24 sm:pt-28">
         <section className="relative overflow-hidden px-3 py-16 sm:px-4 sm:py-32">
           <div className="pointer-events-none absolute left-1/2 top-4 h-80 w-[min(900px,90vw)] -translate-x-1/2 rounded-full bg-[#ff5a45]/10 blur-3xl dark:bg-[#ff5a45]/15" />

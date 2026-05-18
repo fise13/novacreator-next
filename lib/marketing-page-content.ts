@@ -335,8 +335,8 @@ const pageContent: Record<MarketingLocale, Record<MarketingPageKey, MarketingPag
     },
     seo: {
       eyebrow: "SEO",
-      title: "SEO оптимизация",
-      description: "Продвигаем сайт в Google и Яндекс: техника, контент, ссылки и аналитика.",
+      title: "SEO-продвижение сайтов в Алматы и Казахстане",
+      description: "Техническое SEO, семантика, контент, локальное продвижение и аналитика для роста заявок из Google и Яндекс.",
       primaryCta: "Начать SEO",
       secondaryCta: "Быстрее через Ads",
       sections: [
@@ -362,8 +362,8 @@ const pageContent: Record<MarketingLocale, Record<MarketingPageKey, MarketingPag
     },
     ads: {
       eyebrow: "Google Ads",
-      title: "Контекстная реклама для быстрых заявок",
-      description: "Настройка и ведение Google Ads с прозрачной аналитикой и регулярной оптимизацией.",
+      title: "Настройка и ведение Google Ads в Казахстане",
+      description: "Контекстная реклама для быстрых заявок: структура кампаний, цели, минус-слова, аналитика и оптимизация стоимости лида.",
       primaryCta: "Запустить рекламу",
       secondaryCta: "SEO для долгого роста",
       sections: [
@@ -380,8 +380,8 @@ const pageContent: Record<MarketingLocale, Record<MarketingPageKey, MarketingPag
     },
     landing: {
       eyebrow: "Лендинги",
-      title: "Разработка продающих лендингов",
-      description: "Посадочные страницы под лидогенерацию, рекламу и быстрый запуск оффера.",
+      title: "Разработка лендингов для заявок и рекламы",
+      description: "Создаём посадочные страницы под Google Ads, SEO и лидогенерацию: оффер, структура, дизайн, формы и аналитика.",
       primaryCta: "Обсудить лендинг",
       secondaryCta: "Калькулятор",
       sections: [
@@ -406,8 +406,8 @@ const pageContent: Record<MarketingLocale, Record<MarketingPageKey, MarketingPag
     },
     ecommerce: {
       eyebrow: "E-commerce",
-      title: "Разработка интернет-магазинов",
-      description: "Каталог, корзина, оплата, админка, SEO и аналитика для онлайн-продаж.",
+      title: "Разработка интернет-магазинов в Казахстане",
+      description: "Проектируем e-commerce сайты: каталог, фильтры, карточки товаров, checkout, интеграции, SEO и аналитика продаж.",
       primaryCta: "Рассчитать магазин",
       sections: [
         {
@@ -431,8 +431,8 @@ const pageContent: Record<MarketingLocale, Record<MarketingPageKey, MarketingPag
     },
     corporate: {
       eyebrow: "Corporate",
-      title: "Корпоративные сайты для бизнеса",
-      description: "Представительский сайт компании: услуги, доверие, портфолио, блог, FAQ и заявки.",
+      title: "Разработка корпоративных сайтов для бизнеса",
+      description: "Создаём сайты компаний с услугами, кейсами, блогом, FAQ, формами заявок, SEO-структурой и аналитикой.",
       primaryCta: "Получить архитектуру",
       sections: [
         {
@@ -456,8 +456,8 @@ const pageContent: Record<MarketingLocale, Record<MarketingPageKey, MarketingPag
     },
     ios: {
       eyebrow: "iOS",
-      title: "iOS разработка на Swift/SwiftUI",
-      description: "Нативные приложения для бизнеса: MVP, интеграции, Firebase, App Store и поддержка.",
+      title: "iOS-разработка приложений на Swift и SwiftUI",
+      description: "Нативные iOS-приложения для бизнеса: MVP, прототип, Firebase, REST API, авторизация, TestFlight, App Store и поддержка.",
       primaryCta: "Получить оценку",
       secondaryCta: "Посмотреть кейсы",
       sections: [
@@ -798,8 +798,8 @@ const pageContent: Record<MarketingLocale, Record<MarketingPageKey, MarketingPag
     },
     seo: {
       eyebrow: "SEO",
-      title: "SEO Optimization",
-      description: "Website promotion in Google and Yandex: technical work, content, links and analytics.",
+      title: "SEO services for websites in Kazakhstan",
+      description: "Technical SEO, keyword research, content structure, local SEO and analytics for more organic leads from Google.",
       primaryCta: "Start SEO",
       secondaryCta: "Faster with Ads",
       sections: [
@@ -825,8 +825,8 @@ const pageContent: Record<MarketingLocale, Record<MarketingPageKey, MarketingPag
     },
     ads: {
       eyebrow: "Google Ads",
-      title: "Paid search for fast leads",
-      description: "Google Ads setup and management with transparent analytics and regular optimization.",
+      title: "Google Ads setup and management in Kazakhstan",
+      description: "Paid search campaigns for faster leads: campaign structure, goals, negative keywords, analytics and cost-per-lead optimization.",
       primaryCta: "Launch ads",
       secondaryCta: "SEO for long-term growth",
       sections: [
@@ -843,8 +843,8 @@ const pageContent: Record<MarketingLocale, Record<MarketingPageKey, MarketingPag
     },
     landing: {
       eyebrow: "Landing pages",
-      title: "Landing page development",
-      description: "Lead-generation pages for offers, paid campaigns and fast launch.",
+      title: "Landing page development for leads and ads",
+      description: "Lead-generation landing pages for Google Ads, SEO and fast offer validation: structure, design, forms and analytics.",
       primaryCta: "Discuss landing",
       secondaryCta: "Calculator",
       sections: [
@@ -869,8 +869,8 @@ const pageContent: Record<MarketingLocale, Record<MarketingPageKey, MarketingPag
     },
     ecommerce: {
       eyebrow: "E-commerce",
-      title: "Online store development",
-      description: "Catalog, cart, payments, admin panel, SEO and analytics for online sales.",
+      title: "E-commerce website development in Kazakhstan",
+      description: "Online store development with catalog UX, filters, product pages, checkout, integrations, SEO and sales analytics.",
       primaryCta: "Estimate store",
       sections: [
         {
@@ -894,8 +894,8 @@ const pageContent: Record<MarketingLocale, Record<MarketingPageKey, MarketingPag
     },
     corporate: {
       eyebrow: "Corporate",
-      title: "Corporate websites for business",
-      description: "Company website with services, trust, portfolio, blog, FAQ and lead forms.",
+      title: "Corporate website development for business",
+      description: "Company websites with services, cases, blog, FAQ, lead forms, SEO-ready structure and analytics.",
       primaryCta: "Get site architecture",
       sections: [
         {
@@ -919,8 +919,8 @@ const pageContent: Record<MarketingLocale, Record<MarketingPageKey, MarketingPag
     },
     ios: {
       eyebrow: "iOS",
-      title: "iOS App Development on Swift/SwiftUI",
-      description: "Native business apps: MVP, integrations, Firebase, App Store and support.",
+      title: "iOS app development with Swift and SwiftUI",
+      description: "Native iOS apps for business: MVP, prototype, Firebase, REST API, authentication, TestFlight, App Store and support.",
       primaryCta: "Get estimate",
       secondaryCta: "View cases",
       sections: [
@@ -1057,6 +1057,18 @@ function getExtraSections(locale: MarketingLocale, pageKey: MarketingPageKey): M
         ],
       },
       {
+        title: en ? "Example outcome" : "Пример результата",
+        variant: "featureBand",
+        body: en
+          ? "A clear SEO result is not only higher positions. The website should become easier to index, easier to expand and easier to connect with real requests."
+          : "Хороший результат SEO — это не только рост позиций. Сайт должен легче индексироваться, проще расширяться и понятнее связываться с реальными заявками.",
+        cards: [
+          { title: en ? "Clear structure" : "Понятная структура", text: en ? "Commercial pages match demand clusters instead of competing with each other." : "Коммерческие страницы соответствуют кластерам спроса и не конкурируют друг с другом." },
+          { title: en ? "Measured growth" : "Измеримый рост", text: en ? "Reports show indexing, traffic, positions and leads in one logic." : "В отчётах видны индексация, трафик, позиции и заявки в одной логике." },
+          { title: en ? "Next content plan" : "План контента", text: en ? "The next pages are based on search intent, not random blog ideas." : "Следующие страницы строятся на поисковом намерении, а не случайных темах блога." },
+        ],
+      },
+      {
         title: en ? "SEO process" : "Как мы работаем над SEO",
         variant: "timeline",
         steps: [
@@ -1085,6 +1097,18 @@ function getExtraSections(locale: MarketingLocale, pageKey: MarketingPageKey): M
           { title: en ? "Fast demand" : "Быстрый спрос", text: en ? "Useful when leads are needed sooner than SEO can deliver." : "Подходит, когда заявки нужны быстрее, чем их даст SEO." },
           { title: en ? "Clear offer" : "Понятный оффер", text: en ? "Works best when the page has a clear service, proof and CTA." : "Лучше всего работает, когда у страницы есть понятная услуга, доказательства и CTA." },
           { title: en ? "Measured funnel" : "Измеримая воронка", text: en ? "We connect goals and review cost per lead, not just clicks." : "Подключаем цели и смотрим стоимость заявки, а не только клики." },
+        ],
+      },
+      {
+        title: en ? "Example outcome" : "Пример результата",
+        variant: "mosaic",
+        body: en
+          ? "A useful ads setup gives the business more than clicks: it shows which queries, pages and offers can actually turn into requests."
+          : "Полезная настройка рекламы даёт бизнесу не только клики: она показывает, какие запросы, страницы и офферы реально превращаются в заявки.",
+        cards: [
+          { title: en ? "Clean campaign structure" : "Чистая структура кампаний", text: en ? "Search groups, negatives and ads are separated by intent, so optimization is possible." : "Группы, минус-слова и объявления разделены по намерению, поэтому кампании можно нормально оптимизировать." },
+          { title: en ? "Lead quality control" : "Контроль качества заявок", text: en ? "We review not only cost per click, but request quality and wasted demand." : "Смотрим не только цену клика, но и качество заявок, а также лишний спрос." },
+          { title: en ? "Landing page feedback" : "Обратная связь по странице", text: en ? "Ads data shows where the landing page needs stronger proof, offers or form logic." : "Данные рекламы показывают, где посадочной странице нужны сильнее доказательства, оффер или форма." },
         ],
       },
       {
@@ -1165,6 +1189,11 @@ function buildDevelopmentLandingExtras(locale: MarketingLocale, type: "landing" 
         [en ? "Standard" : "Стандартный", en ? "from 250,000 KZT" : "от 250 000 KZT", en ? "Stronger content, more sections and better conversion logic." : "Больше контента, секций и сильнее конверсионная логика."],
         [en ? "Complex" : "С интеграциями", en ? "from 400,000 KZT" : "от 400 000 KZT", en ? "External services, calculators, advanced forms or custom logic." : "Внешние сервисы, калькуляторы, сложные формы или кастомная логика."],
       ],
+      result: [
+        [en ? "First-screen clarity" : "Понятный первый экран", en ? "Visitor understands the offer, audience and next action without reading the whole page." : "Посетитель понимает оффер, для кого услуга и следующий шаг без чтения всей страницы."],
+        [en ? "Lead path" : "Путь к заявке", en ? "CTA, form, messenger links and analytics work as one request flow." : "CTA, форма, мессенджеры и аналитика работают как единый сценарий заявки."],
+        [en ? "Launch-ready page" : "Готовность к запуску", en ? "The page can receive paid traffic and show which message converts better." : "Страница готова принимать рекламный трафик и показывать, какой посыл конвертирует лучше."],
+      ],
     },
     ecommerce: {
       facts: [
@@ -1187,6 +1216,11 @@ function buildDevelopmentLandingExtras(locale: MarketingLocale, type: "landing" 
         [en ? "Simple store" : "Простой магазин", en ? "from 500,000 KZT" : "от 500 000 KZT", en ? "Up to 100 products and basic order flow." : "До 100 товаров и базовый сценарий заказа."],
         [en ? "Standard" : "Стандартный", en ? "from 800,000 KZT" : "от 800 000 KZT", en ? "100-500 products, stronger filters and integrations." : "100-500 товаров, более сильные фильтры и интеграции."],
         [en ? "Complex" : "Сложный", en ? "from 1,200,000 KZT" : "от 1 200 000 KZT", en ? "500+ products, advanced integrations and custom flows." : "500+ товаров, продвинутые интеграции и кастомные сценарии."],
+      ],
+      result: [
+        [en ? "Catalog users can scan" : "Каталог легко просматривать", en ? "Categories, filters and product cards help users narrow choice without asking support." : "Категории, фильтры и карточки помогают выбрать товар без обращения в поддержку."],
+        [en ? "Order flow is visible" : "Заказ прозрачен", en ? "Cart, checkout and notifications make the buying path predictable." : "Корзина, оформление и уведомления делают покупку понятной."],
+        [en ? "SEO base for products" : "SEO-база для товаров", en ? "Category and product pages are ready for indexing and future content growth." : "Категории и карточки готовы к индексации и дальнейшему росту."],
       ],
     },
     corporate: {
@@ -1212,6 +1246,11 @@ function buildDevelopmentLandingExtras(locale: MarketingLocale, type: "landing" 
         [en ? "Standard" : "Стандартный", en ? "from 500,000 KZT" : "от 500 000 KZT", en ? "8-12 pages plus blog, portfolio, FAQ and integrations." : "8-12 страниц + блог, портфолио, FAQ и интеграции."],
         [en ? "Enterprise" : "Премиум", en ? "from 800,000 KZT" : "от 800 000 KZT", en ? "15+ pages, multilingual flows and advanced forms." : "15+ страниц, мультиязычность и расширенные формы."],
       ],
+      result: [
+        [en ? "Company is easier to trust" : "Компании проще доверять", en ? "Services, cases, process and proof are connected into a calm decision path." : "Услуги, кейсы, процесс и доказательства собраны в спокойный путь к решению."],
+        [en ? "Navigation supports sales" : "Навигация помогает продажам", en ? "Users can move from service pages to cases, FAQ and contact without guessing." : "Пользователь переходит от услуг к кейсам, FAQ и заявке без лишних поисков."],
+        [en ? "Ready for growth" : "Готовность к росту", en ? "Blog, service pages and portfolio can expand without rebuilding the site." : "Блог, услуги и портфолио можно расширять без переделки сайта."],
+      ],
     },
     ios: {
       facts: [
@@ -1235,6 +1274,11 @@ function buildDevelopmentLandingExtras(locale: MarketingLocale, type: "landing" 
         [en ? "MVP app" : "MVP приложение", en ? "project estimate" : "оценка проекта", en ? "First version focused on core business scenario." : "Первая версия вокруг ключевого бизнес-сценария."],
         [en ? "Business app" : "Бизнес-приложение", en ? "custom quote" : "индивидуально", en ? "CRM, ERP, logistics, dashboards or internal workflows." : "CRM, ERP, логистика, кабинеты или внутренние процессы."],
         [en ? "Complex solution" : "Сложное решение", en ? "custom quote" : "индивидуально", en ? "Subscriptions, marketplace, fintech, realtime or scaling." : "Подписки, marketplace, fintech, realtime или масштабирование."],
+      ],
+      result: [
+        [en ? "MVP scope is clear" : "Понятный объём MVP", en ? "The first version focuses on the core scenario instead of trying to include everything." : "Первая версия фокусируется на главном сценарии, а не пытается включить всё сразу."],
+        [en ? "App can be tested early" : "Приложение можно тестировать рано", en ? "Prototype and TestFlight help check logic before expensive scaling." : "Прототип и TestFlight помогают проверить логику до дорогого масштабирования."],
+        [en ? "Release path is prepared" : "Путь к релизу подготовлен", en ? "Testing, account preparation and App Store requirements are included in the launch flow." : "Тестирование, подготовка аккаунта и требования App Store входят в сценарий запуска."],
       ],
     },
   }[type];
@@ -1266,6 +1310,14 @@ function buildDevelopmentLandingExtras(locale: MarketingLocale, type: "landing" 
       title: en ? "Delivery process" : "Этапы работы",
       variant: "timeline",
       steps: data.steps.map(([title, text]) => ({ title, text })),
+    },
+    {
+      title: en ? "Example outcome" : "Пример результата",
+      variant: "featureBand",
+      body: en
+        ? "The page should make the next action obvious: what the user understands, where they click and what the business can measure after launch."
+        : "Страница должна делать следующий шаг очевидным: что пользователь понял, куда нажал и что бизнес может измерить после запуска.",
+      cards: data.result.map(([title, text]) => ({ title, text })),
     },
     {
       title: en ? "Scope and launch notes" : "Объём и запуск",

@@ -32,6 +32,7 @@ export const siteConfig = {
     backgroundLight: "#FFFFFF",
   },
   verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ?? "",
     yandex: "edd889cc7878b9f3",
   },
   analytics: {
