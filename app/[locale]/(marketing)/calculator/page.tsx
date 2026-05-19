@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
+import { PageMotionShell } from "@/components/layout/PageMotionShell";
 import { CostCalculator } from "@/components/calculator/CostCalculator";
 import { HomeFooter } from "@/components/home/HomeFooter";
 import { PremiumNavbar } from "@/components/home/PremiumNavbar";
@@ -27,7 +28,7 @@ export default async function CalculatorPage({
   const isEn = normalizedLocale === "en";
 
   return (
-    <div className="min-h-screen overflow-hidden bg-[#f7f4ed] text-black dark:bg-[#07080b] dark:text-white">
+    <PageMotionShell>
       <PremiumNavbar content={content} locale={normalizedLocale} />
       <main id="main-content" className="relative pt-24 sm:pt-28">
         <section className="relative overflow-hidden px-3 py-16 sm:px-4 sm:py-32">
@@ -49,6 +50,6 @@ export default async function CalculatorPage({
         <CostCalculator locale={normalizedLocale} />
       </main>
       <HomeFooter content={content} locale={normalizedLocale} />
-    </div>
+    </PageMotionShell>
   );
 }

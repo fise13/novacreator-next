@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ArrowDownRight, Clock3, MessageCircle, ShieldCheck, Sparkles } from "lucide-react";
 import { setRequestLocale } from "next-intl/server";
+import { PageMotionShell } from "@/components/layout/PageMotionShell";
 import { FinalCta } from "@/components/home/FinalCta";
 import { HomeFooter } from "@/components/home/HomeFooter";
 import { PremiumNavbar } from "@/components/home/PremiumNavbar";
@@ -41,7 +42,7 @@ export default async function ContactPage({
       ];
 
   return (
-    <div className="min-h-screen overflow-hidden bg-[#f7f4ed] text-black dark:bg-[#07080b] dark:text-white">
+    <PageMotionShell>
       <PremiumNavbar content={content} locale={normalizedLocale} />
       <main id="main-content" className="relative pt-24 sm:pt-28">
         <section className="relative overflow-hidden px-3 py-16 sm:px-4 sm:py-32">
@@ -85,6 +86,6 @@ export default async function ContactPage({
         <FinalCta content={content} variant="page" />
       </main>
       <HomeFooter content={content} locale={normalizedLocale} />
-    </div>
+    </PageMotionShell>
   );
 }

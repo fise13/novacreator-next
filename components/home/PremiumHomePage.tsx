@@ -3,14 +3,13 @@
 import { CinematicHero } from "./CinematicHero";
 import { FinalCta } from "./FinalCta";
 import { HomeFaqSection } from "./HomeFaqSection";
-import { GsapHomeAnimations } from "./GsapHomeAnimations";
+import { PageMotionShell } from "@/components/layout/PageMotionShell";
 import { HomeFooter } from "./HomeFooter";
 import { ProcessTimeline } from "./ProcessTimeline";
 import { PremiumNavbar } from "./PremiumNavbar";
 import { ScrollMesmerisingSection } from "./ScrollMesmerisingSection";
 import { SelectedWorkSection } from "./SelectedWorkSection";
 import { ServicesShowcase } from "./ServicesShowcase";
-import { SmoothScroll } from "./SmoothScroll";
 import { getHomeContent, type HomeLocale } from "./home-content";
 
 export function PremiumHomePage({ locale }: { locale: string }) {
@@ -18,9 +17,7 @@ export function PremiumHomePage({ locale }: { locale: string }) {
   const content = getHomeContent(normalizedLocale);
 
   return (
-    <div className="min-h-screen overflow-hidden bg-[#f7f4ed] text-[#111111] dark:bg-[#07080b] dark:text-white">
-      <SmoothScroll />
-      <GsapHomeAnimations />
+    <PageMotionShell className="text-[#111111]">
       <PremiumNavbar content={content} locale={normalizedLocale} />
       <CinematicHero content={content} locale={normalizedLocale} />
       <ScrollMesmerisingSection locale={normalizedLocale} />
@@ -30,6 +27,6 @@ export function PremiumHomePage({ locale }: { locale: string }) {
       <HomeFaqSection content={content} locale={normalizedLocale} />
       <FinalCta content={content} />
       <HomeFooter content={content} locale={normalizedLocale} />
-    </div>
+    </PageMotionShell>
   );
 }

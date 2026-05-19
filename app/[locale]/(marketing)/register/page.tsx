@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
+import { PageMotionShell } from "@/components/layout/PageMotionShell";
 import { HomeFooter } from "@/components/home/HomeFooter";
 import { PremiumNavbar } from "@/components/home/PremiumNavbar";
 import { getHomeContent, type HomeLocale } from "@/components/home/home-content";
@@ -34,7 +35,7 @@ export default async function RegisterPage({
   const homeContent = getHomeContent(normalizedLocale);
 
   return (
-    <div className="min-h-screen overflow-hidden bg-[#f7f4ed] text-black dark:bg-[#07080b] dark:text-white">
+    <PageMotionShell>
       <PremiumNavbar content={homeContent} locale={normalizedLocale} />
       <main id="main-content" className="px-3 pb-16 pt-28 sm:px-4 sm:pb-20 sm:pt-36">
         <section className="mx-auto max-w-xl">
@@ -60,6 +61,6 @@ export default async function RegisterPage({
         </section>
       </main>
       <HomeFooter content={homeContent} locale={normalizedLocale} />
-    </div>
+    </PageMotionShell>
   );
 }

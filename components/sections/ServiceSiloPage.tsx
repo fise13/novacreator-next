@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { setRequestLocale } from "next-intl/server";
+import { PageMotionShell } from "@/components/layout/PageMotionShell";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { HomeFooter } from "@/components/home/HomeFooter";
 import { PremiumNavbar } from "@/components/home/PremiumNavbar";
@@ -82,13 +83,27 @@ export async function ServiceSiloPage({ locale, siloKey }: ServiceSiloPageProps)
   };
 
   return (
-    <div className="min-h-screen bg-[#f7f4ed] text-black dark:bg-[#07080b] dark:text-white">
+    <PageMotionShell>
       <JsonLd data={jsonLd} id={`silo-json-ld-${siloKey}-${normalizedLocale}`} />
       <PremiumNavbar content={homeContent} locale={normalizedLocale} />
       <main id="main-content" className="relative pt-24 sm:pt-28">
-        <section className="px-3 py-16 sm:px-4 sm:py-24">
-          <div className="mx-auto max-w-7xl">
-            <nav aria-label="Breadcrumb" className="text-sm font-semibold text-black/55 dark:text-white/80">
+        <section className="relative overflow-hidden px-3 py-16 sm:px-4 sm:py-24">
+          <div
+            data-gsap-parallax
+            data-depth="34"
+            className="pointer-events-none absolute left-[8%] top-28 h-24 w-24 rounded-full bg-[#ff5a45]/10 blur-sm"
+          />
+          <div
+            data-gsap-parallax
+            data-depth="-42"
+            className="pointer-events-none absolute right-[10%] top-32 h-36 w-36 rounded-full border border-black/10 bg-white/35 blur-md dark:border-white/10 dark:bg-[#171a22]"
+          />
+          <div className="relative mx-auto max-w-7xl">
+            <nav
+              data-gsap="reveal"
+              aria-label="Breadcrumb"
+              className="text-sm font-semibold text-black/55 dark:text-white/80"
+            >
               <Link href={localizedHref("/")} className="hover:text-[#ff5a45]">
                 {isEn ? "Home" : "Главная"}
               </Link>
@@ -97,16 +112,22 @@ export async function ServiceSiloPage({ locale, siloKey }: ServiceSiloPageProps)
                 {isEn ? "Services" : "Услуги"}
               </Link>
             </nav>
-            <p className="mt-6 text-xs font-semibold uppercase tracking-[0.24em] text-[#ff5a45] sm:text-sm">
+            <p data-gsap="clip" className="mt-6 text-xs font-semibold uppercase tracking-[0.24em] text-[#ff5a45] sm:text-sm">
               {content.eyebrow}
             </p>
-            <h1 className="mt-4 max-w-5xl text-balance font-radio text-4xl font-black leading-[0.95] tracking-[-0.08em] sm:text-7xl lg:text-8xl">
+            <h1
+              data-gsap="clip"
+              className="mt-4 max-w-5xl text-balance font-radio text-4xl font-black leading-[0.95] tracking-[-0.08em] sm:text-7xl lg:text-8xl"
+            >
               {content.h1}
             </h1>
-            <p className="mt-5 max-w-3xl text-base font-semibold leading-7 text-black/62 dark:text-white/90 sm:text-xl sm:leading-8">
+            <p
+              data-gsap="reveal"
+              className="mt-5 max-w-3xl text-base font-semibold leading-7 text-black/62 dark:text-white/90 sm:text-xl sm:leading-8"
+            >
               {content.intro}
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div data-gsap="reveal" className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
                 href={localizedHref("/contact")}
                 className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-black px-6 py-3 text-sm font-bold text-white dark:bg-[#ffebe6] dark:text-[#ff5a45]"
@@ -128,6 +149,7 @@ export async function ServiceSiloPage({ locale, siloKey }: ServiceSiloPageProps)
           {content.sections.map((section) => (
             <section
               key={section.title}
+              data-gsap="reveal"
               className="rounded-[1.5rem] border border-black/10 bg-white/75 p-6 dark:border-white/12 dark:bg-[#171a22] sm:p-8"
             >
               <h2 className="font-radio text-3xl font-black tracking-[-0.06em] sm:text-5xl">{section.title}</h2>
@@ -139,6 +161,7 @@ export async function ServiceSiloPage({ locale, siloKey }: ServiceSiloPageProps)
                   {section.bullets.map((bullet) => (
                     <li
                       key={bullet}
+                      data-gsap="stagger-row"
                       className="flex gap-2 rounded-2xl border border-black/10 bg-[#f7f4ed] p-4 text-sm font-semibold leading-6 dark:border-white/10 dark:bg-[#0b0d13]"
                     >
                       <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ff5a45]" />
@@ -150,7 +173,10 @@ export async function ServiceSiloPage({ locale, siloKey }: ServiceSiloPageProps)
             </section>
           ))}
 
-          <section className="rounded-[1.5rem] border border-black/10 bg-white/75 p-6 dark:border-white/12 dark:bg-[#171a22] sm:p-8">
+          <section
+            data-gsap="reveal"
+            className="rounded-[1.5rem] border border-black/10 bg-white/75 p-6 dark:border-white/12 dark:bg-[#171a22] sm:p-8"
+          >
             <h2 className="font-radio text-3xl font-black tracking-[-0.06em] sm:text-5xl">
               {isEn ? "FAQ" : "Частые вопросы"}
             </h2>
@@ -166,7 +192,7 @@ export async function ServiceSiloPage({ locale, siloKey }: ServiceSiloPageProps)
             </div>
           </section>
 
-          <section>
+          <section data-gsap="reveal">
             <h2 className="font-radio text-2xl font-black tracking-[-0.05em]">
               {isEn ? "Related services" : "Связанные услуги"}
             </h2>
@@ -174,6 +200,7 @@ export async function ServiceSiloPage({ locale, siloKey }: ServiceSiloPageProps)
               {content.relatedLinks.map((link) => (
                 <Link
                   key={link.href}
+                  data-gsap="stagger-row"
                   href={localizedHref(link.href)}
                   className="rounded-full border border-black/15 px-4 py-2 text-sm font-bold transition hover:border-[#ff5a45] hover:text-[#ff5a45] dark:border-white/15"
                 >
@@ -183,7 +210,7 @@ export async function ServiceSiloPage({ locale, siloKey }: ServiceSiloPageProps)
             </div>
           </section>
 
-          <section className="rounded-[1.5rem] bg-black p-8 text-white dark:bg-[#161a22]">
+          <section data-gsap="soft-scale" className="rounded-[1.5rem] bg-black p-8 text-white dark:bg-[#161a22]">
             <h2 className="font-radio text-3xl font-black tracking-[-0.06em]">{content.ctaTitle}</h2>
             <p className="mt-3 max-w-2xl text-sm font-medium leading-6 text-white/70">{content.ctaText}</p>
             <Link
@@ -196,6 +223,6 @@ export async function ServiceSiloPage({ locale, siloKey }: ServiceSiloPageProps)
         </div>
       </main>
       <HomeFooter content={homeContent} locale={normalizedLocale} />
-    </div>
+    </PageMotionShell>
   );
 }

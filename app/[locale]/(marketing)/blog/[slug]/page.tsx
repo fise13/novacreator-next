@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
+import { PageMotionShell } from "@/components/layout/PageMotionShell";
 import { HomeFooter } from "@/components/home/HomeFooter";
 import { PremiumNavbar } from "@/components/home/PremiumNavbar";
 import { getHomeContent, type HomeLocale } from "@/components/home/home-content";
@@ -120,7 +121,7 @@ export default async function BlogPostPage({
   const isPlaceholder = (PLACEHOLDER_BLOG_SLUGS as readonly string[]).includes(slug);
 
   return (
-    <div className="min-h-screen overflow-hidden bg-[#f7f4ed] text-black dark:bg-[#07080b] dark:text-white">
+    <PageMotionShell>
       <PremiumNavbar content={homeContent} locale={normalizedLocale} />
       <main id="main-content" className="px-3 pb-16 pt-28 sm:px-4 sm:pb-20 sm:pt-36">
         <article className="mx-auto max-w-4xl">
@@ -144,20 +145,23 @@ export default async function BlogPostPage({
             </div>
           ) : null}
 
-          <section data-gsap="reveal" className="mt-6 rounded-[1.5rem] border border-black/10 bg-white/75 p-6 shadow-[0_14px_42px_rgba(0,0,0,0.04)] dark:border-white/12 dark:bg-[#171a22] sm:p-8">
+          <section
+            data-gsap="reveal"
+            className="mt-6 rounded-[1.5rem] border border-black/10 bg-white/75 p-6 shadow-[0_14px_42px_rgba(0,0,0,0.04)] dark:border-white/12 dark:bg-[#171a22] sm:p-8"
+          >
             <h2 className="font-radio text-3xl font-black tracking-[-0.06em]">
               {locale === "en" ? "Key takeaways" : "Главные выводы"}
             </h2>
             <ul className="mt-5 grid gap-3 text-sm font-semibold leading-6 text-black/62 dark:text-white/90 sm:grid-cols-2">
               {post.takeaways.map((item) => (
-                <li key={item} className="rounded-2xl border border-black/10 bg-white p-4 dark:border-white/12 dark:bg-[#11141b]">
+                <li key={item} data-gsap="stagger-row" className="rounded-2xl border border-black/10 bg-white p-4 dark:border-white/12 dark:bg-[#11141b]">
                   {item}
                 </li>
               ))}
             </ul>
           </section>
 
-          <section data-gsap="reveal" className="mt-6 rounded-[1.5rem] bg-black p-6 text-white dark:bg-[#161a22] dark:text-white">
+          <section data-gsap="soft-scale" className="mt-6 rounded-[1.5rem] bg-black p-6 text-white dark:bg-[#161a22] dark:text-white">
             <h2 className="font-radio text-3xl font-black tracking-[-0.06em]">
               {locale === "en" ? "Want this applied to your project?" : "Хотите применить это к своему проекту?"}
             </h2>
@@ -173,6 +177,6 @@ export default async function BlogPostPage({
         </article>
       </main>
       <HomeFooter content={homeContent} locale={normalizedLocale} />
-    </div>
+    </PageMotionShell>
   );
 }

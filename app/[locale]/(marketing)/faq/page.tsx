@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ArrowUpRight, HelpCircle, MessageCircle, Search, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { setRequestLocale } from "next-intl/server";
+import { PageMotionShell } from "@/components/layout/PageMotionShell";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { HomeFooter } from "@/components/home/HomeFooter";
 import { PremiumNavbar } from "@/components/home/PremiumNavbar";
@@ -126,7 +127,7 @@ export default async function FaqPage({
     normalizedLocale === "en" && href.startsWith("/") ? `/en${href === "/" ? "" : href}` : href;
 
   return (
-    <div className="min-h-screen overflow-hidden bg-[#f7f4ed] text-black dark:bg-[#07080b] dark:text-white">
+    <PageMotionShell>
       <JsonLd data={faqJsonLd} id={`faq-json-ld-${normalizedLocale}`} />
       <PremiumNavbar content={content} locale={normalizedLocale} />
       <main id="main-content" className="relative pt-24 sm:pt-28">
@@ -208,6 +209,6 @@ export default async function FaqPage({
         </section>
       </main>
       <HomeFooter content={content} locale={normalizedLocale} />
-    </div>
+    </PageMotionShell>
   );
 }

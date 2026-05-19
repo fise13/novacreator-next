@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
+import { PageMotionShell } from "@/components/layout/PageMotionShell";
 import { HomeFooter } from "@/components/home/HomeFooter";
 import { MotorLandPreview } from "@/components/home/MotorLandPreview";
 import { PremiumNavbar } from "@/components/home/PremiumNavbar";
@@ -307,7 +308,7 @@ export default async function PortfolioDetailPage({
   }
 
   return (
-    <div className="min-h-screen overflow-hidden bg-[#f7f4ed] text-black dark:bg-[#07080b] dark:text-white">
+    <PageMotionShell>
       <PremiumNavbar content={homeContent} locale={normalizedLocale} />
       <main id="main-content" className="px-3 pb-16 pt-28 sm:px-4 sm:pb-20 sm:pt-36">
         <article className="mx-auto max-w-7xl">
@@ -398,6 +399,6 @@ export default async function PortfolioDetailPage({
         </article>
       </main>
       <HomeFooter content={homeContent} locale={normalizedLocale} />
-    </div>
+    </PageMotionShell>
   );
 }

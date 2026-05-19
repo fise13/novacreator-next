@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { setRequestLocale } from "next-intl/server";
+import { PageMotionShell } from "@/components/layout/PageMotionShell";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getMarketingPageContent, type MarketingPageKey, type MarketingSection } from "@/lib/marketing-page-content";
 import { absoluteUrl, marketingPageRoutes } from "@/lib/seo";
@@ -358,7 +359,7 @@ export async function MarketingPage({ locale, pageKey }: MarketingPageProps) {
   };
 
   return (
-    <div className="min-h-screen overflow-hidden bg-[#f7f4ed] text-black dark:bg-[#07080b] dark:text-white">
+    <PageMotionShell>
       <JsonLd data={jsonLd} id={`marketing-json-ld-${normalizedLocale}-${pageKey}`} />
       <PremiumNavbar content={homeContent} locale={normalizedLocale} />
       <main id="main-content" className="relative pt-24 sm:pt-28">
@@ -399,6 +400,6 @@ export async function MarketingPage({ locale, pageKey }: MarketingPageProps) {
         </div>
       </main>
       <HomeFooter content={homeContent} locale={normalizedLocale} />
-    </div>
+    </PageMotionShell>
   );
 }
