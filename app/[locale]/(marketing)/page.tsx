@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PremiumHomePage } from "@/components/home/PremiumHomePage";
+import { getHomeContent } from "@/components/home/home-content";
 import { createSeoMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
@@ -13,11 +15,14 @@ export async function generateMetadata({
   return createSeoMetadata({
     locale,
     path: "/",
-    title: locale === "en" ? "NovaCreator Studio - SEO, websites and Google Ads" : "NovaCreator Studio - SEO, сайты и Google Ads",
+    title:
+      locale === "en"
+        ? "Web Design & SEO Agency in Almaty | NovaCreator Studio"
+        : "Веб-дизайн и SEO в Алматы | NovaCreator Studio",
     description:
       locale === "en"
-        ? "Marketing studio for SEO, website development and Google Ads campaigns in Kazakhstan."
-        : "Маркетинговая студия в Алматы: SEO-продвижение, разработка сайтов и Google Ads для роста заявок.",
+        ? "Web design, SEO, Google Ads and mobile apps in Almaty, Kazakhstan. Websites built for leads, analytics and search visibility."
+        : "Веб-дизайн, SEO, Google Ads и приложения в Алматы. Сайты под заявки, аналитику и рост в поиске по Казахстану.",
   });
 }
 
@@ -28,6 +33,21 @@ export default async function HomePage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const content = getHomeContent(locale);
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: content.faq.items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
 
-  return <PremiumHomePage locale={locale} />;
+  return (
+    <>
+      <JsonLd data={faqJsonLd} id={`home-faq-json-ld-${locale}`} />
+      <PremiumHomePage locale={locale} />
+    </>
+  );
 }

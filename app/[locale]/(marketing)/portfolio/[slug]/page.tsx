@@ -2,11 +2,9 @@ import type { Metadata } from "next";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
-import { GsapHomeAnimations } from "@/components/home/GsapHomeAnimations";
 import { HomeFooter } from "@/components/home/HomeFooter";
 import { MotorLandPreview } from "@/components/home/MotorLandPreview";
 import { PremiumNavbar } from "@/components/home/PremiumNavbar";
-import { SmoothScroll } from "@/components/home/SmoothScroll";
 import { getHomeContent, type HomeLocale } from "@/components/home/home-content";
 import { Link } from "@/i18n/navigation";
 import { createSeoMetadata, normalizeSeoLocale, portfolioSeoEntries } from "@/lib/seo";
@@ -310,8 +308,6 @@ export default async function PortfolioDetailPage({
 
   return (
     <div className="min-h-screen overflow-hidden bg-[#f7f4ed] text-black dark:bg-[#07080b] dark:text-white">
-      <SmoothScroll />
-      <GsapHomeAnimations />
       <PremiumNavbar content={homeContent} locale={normalizedLocale} />
       <main id="main-content" className="px-3 pb-16 pt-28 sm:px-4 sm:pb-20 sm:pt-36">
         <article className="mx-auto max-w-7xl">

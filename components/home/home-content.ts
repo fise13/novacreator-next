@@ -5,6 +5,12 @@ export type HomeLocale = "ru" | "en";
 export type HomeContent = (typeof homeContent)[HomeLocale];
 
 const serviceLinks = {
+  webDesign: "/web-design-almaty",
+  seoAgency: "/seo-agency-almaty",
+  branding: "/branding-agency",
+  uiUx: "/ui-ux-design",
+  mobile: "/mobile-app-development",
+  googleAds: "/google-ads-management",
   seo: "/seo",
   ads: "/ads",
   landing: "/landing-page-development",
@@ -46,20 +52,18 @@ export const homeContent = {
       },
     },
     hero: {
-      eyebrow: "Digital-агентство · Алматы · Казахстан",
+      eyebrow: "Web design & SEO · Алматы · Казахстан",
       headline: {
-        first: "Сайт, реклама и SEO",
-        second: "которые приводят клиентов",
+        first: "Агентство веб-дизайна",
+        second: "и SEO в Алматы",
       },
       descriptions: [
-        "SEO-продвижение, разработка сайтов и маркетинговые стратегии, которые приносят результат. Работаем с клиентами по всему Казахстану: Алматы, Астана, Шымкент и другие города. Ваш успех — наша миссия.",
-        "Профессиональное digital-агентство с опытом работы более 10 лет. Помогаем бизнесу расти в интернете через SEO, контекстную рекламу и разработку. Работаем онлайн по всему Казахстану.",
-        "Комплексные решения для digital-продвижения вашего бизнеса. От технического SEO до настройки рекламных кампаний — всё для роста вашей компании.",
+        "Разрабатываем сайты, настраиваем SEO и Google Ads для бизнеса в Алматы и по всему Казахстану. Фокус на заявках, аналитике и измеримом росте.",
       ],
       trustLine: "100+ проектов · 10+ лет · Алматы",
-      primaryCta: "Начать",
+      primaryCta: "Получить расчёт",
       secondaryCta: "Услуги",
-      note: "Для компаний, которым нужен не просто сайт, а управляемая система продаж в интернете.",
+      note: "Веб-дизайн, брендинг, UI/UX, SEO, реклама и мобильные приложения — одной командой.",
       stats: [
         { value: "100+", label: "проектов" },
         { value: "10+", label: "лет опыта" },
@@ -123,27 +127,63 @@ export const homeContent = {
     },
     services: {
       eyebrow: "Услуги",
-      title: "Комплексное digital-продвижение бизнеса",
-      subtitle:
-        "Три ключевых направления главной страницы: SEO, разработка и контекстная реклама.",
+      title: "Digital-услуги для роста бизнеса в Казахстане",
+      subtitle: "Отдельные страницы под каждое направление — без размытой подачи «мы всё делаем».",
       items: [
         {
-          title: "SEO",
-          description:
-            "Техническая оптимизация, контент, локальное продвижение и аналитика для роста органического трафика.",
-          href: serviceLinks.seo,
+          title: "Веб-дизайн",
+          description: "UI, структура и визуал сайта под конверсию и SEO.",
+          href: serviceLinks.webDesign,
         },
         {
-          title: "Разработка",
-          description:
-            "Продающие лендинги, корпоративные сайты, интернет-магазины и цифровые продукты под задачи бизнеса.",
-          href: "/services#development",
+          title: "SEO-агентство",
+          description: "Продвижение в Google и Яндекс с фокусом на заявки.",
+          href: serviceLinks.seoAgency,
+        },
+        {
+          title: "Брендинг",
+          description: "Айдентика и позиционирование перед запуском сайта.",
+          href: serviceLinks.branding,
+        },
+        {
+          title: "UI/UX",
+          description: "Прототипы и сценарии, которые снижают отказы.",
+          href: serviceLinks.uiUx,
         },
         {
           title: "Google Ads",
-          description:
-            "Настройка рекламных кампаний, гипотезы, оптимизация бюджета и прозрачная отчетность.",
-          href: serviceLinks.ads,
+          description: "Быстрые заявки из поиска с прозрачным CPL.",
+          href: serviceLinks.googleAds,
+        },
+        {
+          title: "Мобильные приложения",
+          description: "iOS на Swift/SwiftUI для MVP и бизнес-продуктов.",
+          href: serviceLinks.mobile,
+        },
+      ],
+    },
+    faq: {
+      eyebrow: "FAQ",
+      title: "Частые вопросы перед стартом проекта",
+      subtitle: "Коротко о сроках, SEO, рекламе и формате работы в Алматы.",
+      viewAll: "Все вопросы и ответы",
+      items: [
+        {
+          question: "Сколько стоит сайт в Алматы?",
+          answer:
+            "Зависит от типа: лендинг, корпоративный сайт или магазин. После брифа даём вилку и этапы — без скрытых доплат в смете.",
+        },
+        {
+          question: "Когда SEO начнёт приносить заявки?",
+          answer: "Первые сигналы обычно через 3–4 месяца. Для быстрого спроса параллельно подключаем Google Ads.",
+        },
+        {
+          question: "Работаете только в Алматы?",
+          answer: "Базируемся в Алматы, ведём проекты онлайн по всему Казахстану и с зарубежными клиентами.",
+        },
+        {
+          question: "Можно заказать только SEO или только сайт?",
+          answer: "Да. Часто начинаем с аудита или MVP-лендинга, затем масштабируем каналы по данным.",
         },
       ],
     },
@@ -193,12 +233,14 @@ export const homeContent = {
       rights: "All rights reserved.",
       backToTop: "Наверх",
       services: [
-        { label: "SEO", href: serviceLinks.seo },
-        { label: "Google Ads", href: serviceLinks.ads },
+        { label: "Веб-дизайн", href: serviceLinks.webDesign },
+        { label: "SEO Алматы", href: serviceLinks.seoAgency },
+        { label: "Брендинг", href: serviceLinks.branding },
+        { label: "UI/UX", href: serviceLinks.uiUx },
+        { label: "Google Ads", href: serviceLinks.googleAds },
+        { label: "Мобильные приложения", href: serviceLinks.mobile },
         { label: "Лендинги", href: serviceLinks.landing },
-        { label: "E-commerce", href: serviceLinks.ecommerce },
         { label: "Корпоративные сайты", href: serviceLinks.corporate },
-        { label: "iOS-разработка", href: serviceLinks.ios },
       ],
       company: [
         { label: "О нас", href: "/about" },
@@ -243,20 +285,18 @@ export const homeContent = {
       },
     },
     hero: {
-      eyebrow: "Digital agency · Almaty · Kazakhstan",
+      eyebrow: "Web design & SEO · Almaty · Kazakhstan",
       headline: {
-        first: "Websites, ads and SEO",
-        second: "built to win clients",
+        first: "Web design & SEO agency",
+        second: "in Almaty",
       },
       descriptions: [
-        "SEO promotion, website development and marketing strategies that deliver results. We work with clients throughout Kazakhstan: Almaty, Astana, Shymkent and other cities. Your success is our mission.",
-        "Professional digital agency with over 10 years of experience. We help businesses grow online through SEO, contextual advertising and development.",
-        "Comprehensive solutions for digital promotion of your business. From technical SEO to advertising campaign setup — everything for your company's growth.",
+        "We build websites, run SEO and Google Ads for businesses in Almaty and across Kazakhstan — focused on leads and measurable growth.",
       ],
       trustLine: "100+ projects · 10+ years · Almaty",
-      primaryCta: "Get Started",
+      primaryCta: "Get a quote",
       secondaryCta: "Services",
-      note: "For teams that need more than a website: a measurable digital sales system.",
+      note: "Web design, branding, UI/UX, SEO, ads and mobile apps — one team.",
       stats: [
         { value: "100+", label: "projects" },
         { value: "10+", label: "years of experience" },
@@ -320,27 +360,62 @@ export const homeContent = {
     },
     services: {
       eyebrow: "Services",
-      title: "Full-funnel digital growth for modern businesses",
-      subtitle:
-        "The homepage keeps the original three service pillars: SEO, development and Google Ads.",
+      title: "Digital services for growth in Kazakhstan",
+      subtitle: "Dedicated pages per service — clear intent for search and buyers.",
       items: [
         {
-          title: "SEO",
-          description:
-            "Technical optimization, content, local search and analytics for compounding organic growth.",
-          href: serviceLinks.seo,
+          title: "Web design",
+          description: "UI, structure and visuals built for conversion and SEO.",
+          href: serviceLinks.webDesign,
         },
         {
-          title: "Development",
-          description:
-            "Landing pages, corporate websites, e-commerce and digital products built around business goals.",
-          href: "/services#development",
+          title: "SEO agency",
+          description: "Organic growth in Google and Yandex with lead focus.",
+          href: serviceLinks.seoAgency,
+        },
+        {
+          title: "Branding",
+          description: "Identity and positioning before your site launch.",
+          href: serviceLinks.branding,
+        },
+        {
+          title: "UI/UX",
+          description: "Prototypes and flows that reduce drop-off.",
+          href: serviceLinks.uiUx,
         },
         {
           title: "Google Ads",
-          description:
-            "Campaign setup, testing, budget optimization and transparent reporting.",
-          href: serviceLinks.ads,
+          description: "Fast search demand with transparent CPL.",
+          href: serviceLinks.googleAds,
+        },
+        {
+          title: "Mobile apps",
+          description: "iOS with Swift/SwiftUI for MVP and business products.",
+          href: serviceLinks.mobile,
+        },
+      ],
+    },
+    faq: {
+      eyebrow: "FAQ",
+      title: "Common questions before we start",
+      subtitle: "Timelines, SEO, ads and how we work from Almaty.",
+      viewAll: "Full FAQ",
+      items: [
+        {
+          question: "How much does a website cost in Almaty?",
+          answer: "Depends on scope: landing, corporate site or store. We quote after a short brief.",
+        },
+        {
+          question: "When will SEO bring leads?",
+          answer: "Early signals in 3–4 months. For faster demand we add Google Ads in parallel.",
+        },
+        {
+          question: "Almaty only?",
+          answer: "Based in Almaty, we work remotely across Kazakhstan and internationally.",
+        },
+        {
+          question: "Can we hire you for SEO or web only?",
+          answer: "Yes. Many clients start with an audit or MVP landing, then scale channels.",
         },
       ],
     },
@@ -390,12 +465,14 @@ export const homeContent = {
       rights: "All rights reserved.",
       backToTop: "Back to top",
       services: [
-        { label: "SEO", href: serviceLinks.seo },
-        { label: "Google Ads", href: serviceLinks.ads },
+        { label: "Web design", href: serviceLinks.webDesign },
+        { label: "SEO Almaty", href: serviceLinks.seoAgency },
+        { label: "Branding", href: serviceLinks.branding },
+        { label: "UI/UX", href: serviceLinks.uiUx },
+        { label: "Google Ads", href: serviceLinks.googleAds },
+        { label: "Mobile apps", href: serviceLinks.mobile },
         { label: "Landing pages", href: serviceLinks.landing },
-        { label: "E-commerce", href: serviceLinks.ecommerce },
         { label: "Corporate websites", href: serviceLinks.corporate },
-        { label: "iOS development", href: serviceLinks.ios },
       ],
       company: [
         { label: "About", href: "/about" },

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { isBlogPostIndexable } from "@/lib/blog-indexing";
 import { getMarketingPageContent, type MarketingPageKey } from "@/lib/marketing-page-content";
+import { OG_IMAGE_HEIGHT, OG_IMAGE_PATH, OG_IMAGE_WIDTH, SERVICE_SILO_PATHS } from "@/lib/seo-constants";
 import { siteConfig } from "@/lib/site-config";
 
 export type SeoLocale = "ru" | "en";
@@ -36,6 +38,11 @@ export const marketingPageRoutes: Record<MarketingPageKey, string> = {
 export const staticSeoRoutes: SeoRoute[] = [
   { path: "/", changeFrequency: "weekly", priority: 1 },
   { path: "/services", changeFrequency: "weekly", priority: 0.9 },
+  ...SERVICE_SILO_PATHS.map((path) => ({
+    path,
+    changeFrequency: "weekly" as const,
+    priority: 0.88,
+  })),
   { path: "/seo", changeFrequency: "weekly", priority: 0.85 },
   { path: "/ads", changeFrequency: "weekly", priority: 0.85 },
   { path: "/landing-page-development", changeFrequency: "weekly", priority: 0.8 },
@@ -48,7 +55,6 @@ export const staticSeoRoutes: SeoRoute[] = [
   { path: "/calculator", changeFrequency: "monthly", priority: 0.65 },
   { path: "/faq", changeFrequency: "monthly", priority: 0.65 },
   { path: "/contact", changeFrequency: "monthly", priority: 0.75 },
-  { path: "/tabs", changeFrequency: "yearly", priority: 0.2 },
   { path: "/vacancies", changeFrequency: "monthly", priority: 0.45 },
   { path: "/privacy", changeFrequency: "yearly", priority: 0.25 },
 ];
@@ -246,8 +252,17 @@ export function createSeoMetadata({
   const normalizedLocale = normalizeSeoLocale(locale);
   const url = absoluteUrl(path, normalizedLocale);
 
+  const ogImages = [
+    {
+      url: OG_IMAGE_PATH,
+      width: OG_IMAGE_WIDTH,
+      height: OG_IMAGE_HEIGHT,
+      alt: siteConfig.name,
+    },
+  ];
+
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: {
       canonical: url,
@@ -261,25 +276,18 @@ export function createSeoMetadata({
       locale: normalizedLocale === "ru" ? "ru_KZ" : "en_US",
       alternateLocale: normalizedLocale === "ru" ? ["en_US"] : ["ru_KZ"],
       type: "website",
-      images: [
-        {
-          url: "/opengraph-image.svg",
-          width: 1200,
-          height: 630,
-          alt: siteConfig.name,
-        },
-      ],
+      images: ogImages,
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: ["/opengraph-image.svg"],
+      images: [OG_IMAGE_PATH],
     },
     robots: noIndex
       ? {
           index: false,
-          follow: false,
+          follow: true,
         }
       : {
           index: true,
@@ -304,4 +312,8 @@ export function createMarketingMetadata(locale: string, pageKey: MarketingPageKe
     title: content.title,
     description: content.description,
   });
+}
+
+export function getIndexableBlogSlugAlternates() {
+  return blogSlugAlternates.filter((entry) => isBlogPostIndexable(entry.ru) || isBlogPostIndexable(entry.en));
 }

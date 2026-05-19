@@ -25,6 +25,12 @@ export const routing = defineRouting({
     "/faq": "/faq",
     "/vacancies": "/vacancies",
     "/privacy": "/privacy",
+    "/web-design-almaty": "/web-design-almaty",
+    "/seo-agency-almaty": "/seo-agency-almaty",
+    "/branding-agency": "/branding-agency",
+    "/ui-ux-design": "/ui-ux-design",
+    "/mobile-app-development": "/mobile-app-development",
+    "/google-ads-management": "/google-ads-management",
   },
 });
 

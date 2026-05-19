@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "NovaCreator Studio",
   url: "https://novacreatorstudio.com",
   defaultDescription:
-    "Маркетинговое агентство NovaCreator Studio: SEO, разработка сайтов, контекстная реклама. Алматы, Казахстан.",
+    "NovaCreator Studio — веб-дизайн, SEO, Google Ads и разработка сайтов в Алматы, Казахстан. Сайты и продвижение под заявки.",
   contacts: {
     email: "contact@novacreatorstudio.com",
     privacyEmail: "privacy@novacreatorstudio.com",

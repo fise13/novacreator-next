@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import { ArrowUpRight, HelpCircle, MessageCircle, Search, Sparkles } from "lucide-react";
 import Link from "next/link";
-import Script from "next/script";
 import { setRequestLocale } from "next-intl/server";
-import { GsapHomeAnimations } from "@/components/home/GsapHomeAnimations";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { HomeFooter } from "@/components/home/HomeFooter";
 import { PremiumNavbar } from "@/components/home/PremiumNavbar";
-import { SmoothScroll } from "@/components/home/SmoothScroll";
 import { getHomeContent, type HomeLocale } from "@/components/home/home-content";
 import { createMarketingMetadata } from "@/lib/seo";
 
@@ -129,12 +127,8 @@ export default async function FaqPage({
 
   return (
     <div className="min-h-screen overflow-hidden bg-[#f7f4ed] text-black dark:bg-[#07080b] dark:text-white">
-      <SmoothScroll />
-      <GsapHomeAnimations />
+      <JsonLd data={faqJsonLd} id={`faq-json-ld-${normalizedLocale}`} />
       <PremiumNavbar content={content} locale={normalizedLocale} />
-      <Script id={`faq-json-ld-${normalizedLocale}`} type="application/ld+json" strategy="afterInteractive">
-        {JSON.stringify(faqJsonLd)}
-      </Script>
       <main id="main-content" className="relative pt-24 sm:pt-28">
         <section className="relative overflow-hidden px-3 py-16 sm:px-4 sm:py-32">
           <div data-gsap-parallax data-depth="42" className="pointer-events-none absolute left-[8%] top-28 h-32 w-32 rounded-full bg-[#ff5a45]/10 blur-2xl" />

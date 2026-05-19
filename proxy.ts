@@ -11,7 +11,10 @@ export default function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  return intlMiddleware(request);
+  const response = intlMiddleware(request);
+  const locale = pathname === "/en" || pathname.startsWith("/en/") ? "en" : "ru";
+  response.headers.set("x-site-locale", locale);
+  return response;
 }
 
 export const config = {

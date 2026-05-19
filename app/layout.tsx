@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Inter, Source_Serif_4 } from "next/font/google";
-import Script from "next/script";
+import { headers } from "next/headers";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { buildOrganizationGraph } from "@/lib/organization-schema";
+import { OG_IMAGE_HEIGHT, OG_IMAGE_PATH, OG_IMAGE_WIDTH } from "@/lib/seo-constants";
 import { absoluteUrl, alternateLanguages } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
@@ -20,25 +23,19 @@ const sourceSerif = Source_Serif_4({
   subsets: ["latin", "cyrillic"],
 });
 
+const defaultTitle =
+  "Web Design & SEO Agency in Almaty | NovaCreator Studio";
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   applicationName: siteConfig.name,
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   creator: siteConfig.name,
   publisher: siteConfig.name,
-  category: "marketing",
-  keywords: [
-    "NovaCreator Studio",
-    "SEO Алматы",
-    "разработка сайтов Алматы",
-    "Google Ads Казахстан",
-    "маркетинговое агентство",
-    "создание сайтов",
-    "контекстная реклама",
-  ],
+  category: "business",
   title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
+    default: defaultTitle,
+    template: "%s",
   },
   description: siteConfig.defaultDescription,
   alternates: {
@@ -60,24 +57,24 @@ export const metadata: Metadata = {
     type: "website",
     siteName: siteConfig.name,
     url: siteConfig.url,
-    title: siteConfig.name,
+    title: defaultTitle,
     description: siteConfig.defaultDescription,
     locale: "ru_KZ",
     alternateLocale: ["en_US"],
     images: [
       {
-          url: "/opengraph-image.svg",
-          width: 1200,
-          height: 630,
+        url: OG_IMAGE_PATH,
+        width: OG_IMAGE_WIDTH,
+        height: OG_IMAGE_HEIGHT,
         alt: siteConfig.name,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.name,
+    title: defaultTitle,
     description: siteConfig.defaultDescription,
-    images: ["/opengraph-image.svg"],
+    images: [OG_IMAGE_PATH],
   },
   robots: {
     index: true,
@@ -98,58 +95,24 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headersList = await headers();
+  const localeHeader = headersList.get("x-site-locale");
+  const lang = localeHeader === "en" ? "en" : "ru";
+
   return (
     <html
-      lang="ru"
+      lang={lang}
       suppressHydrationWarning
       className={`${inter.variable} ${sourceSerif.variable} ${geistMono.variable}`}
     >
       <body>
+        <JsonLd data={buildOrganizationGraph()} id="ld-organization" />
         {children}
-        <Script id="ld-website" type="application/ld+json" strategy="afterInteractive">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@graph": [
-              {
-                "@type": "WebSite",
-                "@id": `${siteConfig.url}/#website`,
-                name: siteConfig.name,
-                url: siteConfig.url,
-                inLanguage: ["ru-KZ", "en"],
-                publisher: {
-                  "@id": `${siteConfig.url}/#organization`,
-                },
-              },
-              {
-                "@type": ["Organization", "LocalBusiness"],
-                "@id": `${siteConfig.url}/#organization`,
-                name: siteConfig.name,
-                legalName: siteConfig.legal.organization,
-                url: siteConfig.url,
-                email: siteConfig.contacts.email,
-                telephone: siteConfig.contacts.phone,
-                foundingDate: siteConfig.legal.foundedYear,
-                address: {
-                  "@type": "PostalAddress",
-                  addressLocality: siteConfig.address.city,
-                  addressCountry: siteConfig.address.countryCode,
-                },
-                areaServed: [
-                  {
-                    "@type": "Country",
-                    name: siteConfig.address.country,
-                  },
-                ],
-                sameAs: Object.values(siteConfig.social),
-              },
-            ],
-          })}
-        </Script>
       </body>
     </html>
   );

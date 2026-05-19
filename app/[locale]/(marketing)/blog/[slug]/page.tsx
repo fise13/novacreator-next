@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
-import { GsapHomeAnimations } from "@/components/home/GsapHomeAnimations";
 import { HomeFooter } from "@/components/home/HomeFooter";
 import { PremiumNavbar } from "@/components/home/PremiumNavbar";
-import { SmoothScroll } from "@/components/home/SmoothScroll";
 import { getHomeContent, type HomeLocale } from "@/components/home/home-content";
 import { Link } from "@/i18n/navigation";
+import { isBlogPostIndexable, PLACEHOLDER_BLOG_SLUGS } from "@/lib/blog-indexing";
 import { blogSeoEntries, blogSlugAlternates, createSeoMetadata, normalizeSeoLocale } from "@/lib/seo";
 
 type LocalizedPost = {
@@ -92,6 +91,7 @@ export async function generateMetadata({
     path: `/blog/${slug}`,
     title: seo.title,
     description: seo.description,
+    noIndex: !isBlogPostIndexable(slug),
     alternatePaths: alternateSlugs
       ? {
           ru: `/blog/${alternateSlugs.ru}`,
@@ -117,10 +117,10 @@ export default async function BlogPostPage({
     notFound();
   }
 
+  const isPlaceholder = (PLACEHOLDER_BLOG_SLUGS as readonly string[]).includes(slug);
+
   return (
     <div className="min-h-screen overflow-hidden bg-[#f7f4ed] text-black dark:bg-[#07080b] dark:text-white">
-      <SmoothScroll />
-      <GsapHomeAnimations />
       <PremiumNavbar content={homeContent} locale={normalizedLocale} />
       <main id="main-content" className="px-3 pb-16 pt-28 sm:px-4 sm:pb-20 sm:pt-36">
         <article className="mx-auto max-w-4xl">
@@ -136,13 +136,13 @@ export default async function BlogPostPage({
             <p className="relative mt-5 text-base font-semibold leading-7 text-black/62 dark:text-white/90 sm:mt-6 sm:text-lg sm:leading-8">{post.excerpt}</p>
           </div>
 
-          <div data-gsap="reveal" className="mt-8 rounded-[1.5rem] border border-black/10 bg-white/75 p-6 text-base font-semibold leading-8 text-black/62 shadow-[0_14px_42px_rgba(0,0,0,0.04)] dark:border-white/12 dark:bg-[#171a22] dark:text-white/90 sm:p-8">
-            <p>
+          {isPlaceholder ? (
+            <div className="mt-8 rounded-[1.5rem] border border-amber-500/30 bg-amber-50/80 p-6 text-sm font-semibold leading-7 text-amber-950 dark:border-amber-400/30 dark:bg-amber-950/30 dark:text-amber-100 sm:p-8">
               {locale === "en"
-                ? "The full article content will be migrated from data/blog.json into MDX or a content store. This page keeps the SEO route, localized metadata direction and article layout ready for the remaining content import."
-                : "Полный текст статьи будет перенесён из data/blog.json в MDX или контентное хранилище. Сейчас страница сохраняет SEO-маршрут, локализованное направление и готовую структуру статьи для дальнейшего импорта контента."}
-            </p>
-          </div>
+                ? "Full article in progress. This URL is temporarily excluded from search indexing until the complete guide is published."
+                : "Полная статья в работе. URL временно исключён из индексации, пока не будет опубликован полный материал."}
+            </div>
+          ) : null}
 
           <section data-gsap="reveal" className="mt-6 rounded-[1.5rem] border border-black/10 bg-white/75 p-6 shadow-[0_14px_42px_rgba(0,0,0,0.04)] dark:border-white/12 dark:bg-[#171a22] sm:p-8">
             <h2 className="font-radio text-3xl font-black tracking-[-0.06em]">

@@ -2,6 +2,7 @@
 
 import { CinematicHero } from "./CinematicHero";
 import { FinalCta } from "./FinalCta";
+import { HomeFaqSection } from "./HomeFaqSection";
 import { GsapHomeAnimations } from "./GsapHomeAnimations";
 import { HomeFooter } from "./HomeFooter";
 import { ProcessTimeline } from "./ProcessTimeline";
@@ -26,6 +27,7 @@ export function PremiumHomePage({ locale }: { locale: string }) {
       <ServicesShowcase content={content} locale={normalizedLocale} />
       <SelectedWorkSection content={content} locale={normalizedLocale} />
       <ProcessTimeline content={content} />
+      <HomeFaqSection content={content} locale={normalizedLocale} />
       <FinalCta content={content} />
       <HomeFooter content={content} locale={normalizedLocale} />
     </div>

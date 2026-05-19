@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
-import { GsapHomeAnimations } from "@/components/home/GsapHomeAnimations";
 import { HomeFooter } from "@/components/home/HomeFooter";
 import { PremiumNavbar } from "@/components/home/PremiumNavbar";
-import { SmoothScroll } from "@/components/home/SmoothScroll";
 import { getHomeContent, type HomeLocale } from "@/components/home/home-content";
 import { Link } from "@/i18n/navigation";
 import { createSeoMetadata } from "@/lib/seo";
@@ -37,8 +35,6 @@ export default async function LoginPage({
 
   return (
     <div className="min-h-screen overflow-hidden bg-[#f7f4ed] text-black dark:bg-[#07080b] dark:text-white">
-      <SmoothScroll />
-      <GsapHomeAnimations />
       <PremiumNavbar content={homeContent} locale={normalizedLocale} />
       <main id="main-content" className="px-3 pb-16 pt-28 sm:px-4 sm:pb-20 sm:pt-36">
         <section className="mx-auto max-w-xl">

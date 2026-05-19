@@ -3,7 +3,7 @@ import {
   absoluteUrl,
   alternateLanguages,
   alternateLanguagesForPaths,
-  blogSlugAlternates,
+  getIndexableBlogSlugAlternates,
   portfolioSeoEntries,
   staticSeoRoutes,
 } from "@/lib/seo";
@@ -56,7 +56,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ];
   });
 
-  const blogEntries = blogSlugAlternates.flatMap((entry) => {
+  const blogEntries = getIndexableBlogSlugAlternates().flatMap((entry) => {
     const paths = {
       ru: `/blog/${entry.ru}`,
       en: `/blog/${entry.en}`,

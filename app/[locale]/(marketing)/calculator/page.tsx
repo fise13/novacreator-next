@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { CostCalculator } from "@/components/calculator/CostCalculator";
-import { GsapHomeAnimations } from "@/components/home/GsapHomeAnimations";
 import { HomeFooter } from "@/components/home/HomeFooter";
 import { PremiumNavbar } from "@/components/home/PremiumNavbar";
-import { SmoothScroll } from "@/components/home/SmoothScroll";
 import { getHomeContent, type HomeLocale } from "@/components/home/home-content";
 import { createMarketingMetadata } from "@/lib/seo";
 
@@ -30,8 +28,6 @@ export default async function CalculatorPage({
 
   return (
     <div className="min-h-screen overflow-hidden bg-[#f7f4ed] text-black dark:bg-[#07080b] dark:text-white">
-      <SmoothScroll />
-      <GsapHomeAnimations />
       <PremiumNavbar content={content} locale={normalizedLocale} />
       <main id="main-content" className="relative pt-24 sm:pt-28">
         <section className="relative overflow-hidden px-3 py-16 sm:px-4 sm:py-32">

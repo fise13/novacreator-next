@@ -1,15 +1,13 @@
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import Script from "next/script";
 import { setRequestLocale } from "next-intl/server";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { getMarketingPageContent, type MarketingPageKey, type MarketingSection } from "@/lib/marketing-page-content";
 import { absoluteUrl, marketingPageRoutes } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
-import { GsapHomeAnimations } from "../home/GsapHomeAnimations";
 import { HomeFooter } from "../home/HomeFooter";
 import { MotorLandPreview } from "../home/MotorLandPreview";
 import { PremiumNavbar } from "../home/PremiumNavbar";
-import { SmoothScroll } from "../home/SmoothScroll";
 import { getHomeContent, type HomeLocale } from "../home/home-content";
 
 type MarketingPageProps = {
@@ -361,12 +359,8 @@ export async function MarketingPage({ locale, pageKey }: MarketingPageProps) {
 
   return (
     <div className="min-h-screen overflow-hidden bg-[#f7f4ed] text-black dark:bg-[#07080b] dark:text-white">
-      <SmoothScroll />
-      <GsapHomeAnimations />
+      <JsonLd data={jsonLd} id={`marketing-json-ld-${normalizedLocale}-${pageKey}`} />
       <PremiumNavbar content={homeContent} locale={normalizedLocale} />
-      <Script id={`marketing-json-ld-${normalizedLocale}-${pageKey}`} type="application/ld+json" strategy="afterInteractive">
-        {JSON.stringify(jsonLd)}
-      </Script>
       <main id="main-content" className="relative pt-24 sm:pt-28">
         <section className="relative overflow-hidden px-3 py-16 sm:px-4 sm:py-32">
           <div className="pointer-events-none absolute left-1/2 top-4 h-80 w-[min(900px,90vw)] -translate-x-1/2 rounded-full bg-[#ff5a45]/10 blur-3xl dark:bg-[#ff5a45]/15" />

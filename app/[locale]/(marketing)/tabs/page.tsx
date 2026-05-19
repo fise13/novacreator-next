@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { ArrowUpRight, BarChart3, Bot, Layers3, Sparkles } from "lucide-react";
 import { setRequestLocale } from "next-intl/server";
-import { GsapHomeAnimations } from "@/components/home/GsapHomeAnimations";
 import { HomeFooter } from "@/components/home/HomeFooter";
 import { PremiumNavbar } from "@/components/home/PremiumNavbar";
-import { SmoothScroll } from "@/components/home/SmoothScroll";
 import { getHomeContent, type HomeLocale } from "@/components/home/home-content";
 import { PremiumTabs, type PremiumTabItem } from "@/components/ui/PremiumTabs";
 import { createSeoMetadata } from "@/lib/seo";
@@ -21,6 +19,7 @@ export async function generateMetadata({
     path: "/tabs",
     title: "Premium Tabs",
     description: "A polished Framer Motion tab navigation and content transition system.",
+    noIndex: true,
   });
 }
 
@@ -156,8 +155,6 @@ export default async function TabsDemoPage({
 
   return (
     <div className="min-h-screen overflow-hidden bg-[#f7f4ed] text-black dark:bg-[#07080b] dark:text-white">
-      <SmoothScroll />
-      <GsapHomeAnimations />
       <PremiumNavbar content={homeContent} locale={normalizedLocale} />
       <main className="px-3 pb-16 pt-28 sm:px-4 sm:pb-24 sm:pt-36">
         <section className="mx-auto max-w-7xl">
