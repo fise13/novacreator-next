@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
+import createMDX from "@next/mdx";
 import createNextIntlPlugin from "next-intl/plugin";
+import { siteHosts } from "./lib/site-config";
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -24,8 +26,15 @@ const trustedTypesPolicy = [
 ].join("; ");
 
 const nextConfig: NextConfig = {
+  pageExtensions: ["ts", "tsx", "mdx"],
   async redirects() {
     return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: siteHosts.www }],
+        destination: `https://${siteHosts.canonical}/:path*`,
+        permanent: true,
+      },
       {
         source: "/index.php",
         destination: "/",
@@ -130,5 +139,10 @@ const nextConfig: NextConfig = {
 };
 
 const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: ["remark-gfm"],
+  },
+});
 
-export default withNextIntl(nextConfig);
+export default withNextIntl(withMDX(nextConfig));

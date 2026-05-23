@@ -4,8 +4,8 @@ import { setRequestLocale } from "next-intl/server";
 import { PageMotionShell } from "@/components/layout/PageMotionShell";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getMarketingPageContent, type MarketingPageKey, type MarketingSection } from "@/lib/marketing-page-content";
-import { absoluteUrl, marketingPageRoutes } from "@/lib/seo";
-import { siteConfig } from "@/lib/site-config";
+import { marketingPageRoutes } from "@/lib/seo";
+import { createPageUrl, generateSchema, organizationId } from "@/lib/seo/schema";
 import { HomeFooter } from "../home/HomeFooter";
 import { MotorLandPreview } from "../home/MotorLandPreview";
 import { PremiumNavbar } from "../home/PremiumNavbar";
@@ -25,7 +25,7 @@ export async function MarketingPage({ locale, pageKey }: MarketingPageProps) {
     locale === "en" && href.startsWith("/") ? `/en${href === "/" ? "" : href}` : href;
   const isEn = normalizedLocale === "en";
   const pagePath = marketingPageRoutes[pageKey];
-  const pageUrl = absoluteUrl(pagePath, normalizedLocale);
+  const pageUrl = createPageUrl(pagePath, normalizedLocale);
   const servicePageKeys = new Set<MarketingPageKey>([
     "services",
     "seo",
@@ -35,68 +35,45 @@ export async function MarketingPage({ locale, pageKey }: MarketingPageProps) {
     "corporate",
     "ios",
   ]);
+  const faqItems = content.sections
+    .flatMap((section) => section.faq ?? [])
+    .map((item) => ({ question: item.title, answer: item.text }));
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": `${pageUrl}#webpage`,
+      generateSchema("webPage", {
+        id: `${pageUrl}#webpage`,
         url: pageUrl,
         name: content.title,
         description: content.description,
-        inLanguage: normalizedLocale === "ru" ? "ru-KZ" : "en",
-        isPartOf: {
-          "@id": `${siteConfig.url}/#website`,
-        },
-        about: servicePageKeys.has(pageKey)
-          ? {
-              "@id": `${pageUrl}#service`,
-            }
-          : {
-              "@id": `${siteConfig.url}/#organization`,
-            },
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": `${pageUrl}#breadcrumb`,
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: isEn ? "Home" : "Главная",
-            item: absoluteUrl("/", normalizedLocale),
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: content.title,
-            item: pageUrl,
-          },
+        locale: normalizedLocale,
+        aboutId: servicePageKeys.has(pageKey) ? `${pageUrl}#service` : organizationId,
+      }),
+      generateSchema("breadcrumb", {
+        id: `${pageUrl}#breadcrumb`,
+        items: [
+          { name: isEn ? "Home" : "Главная", item: createPageUrl("/", normalizedLocale) },
+          { name: content.title, item: pageUrl },
         ],
-      },
+      }),
       ...(servicePageKeys.has(pageKey)
         ? [
-            {
-              "@type": "Service",
-              "@id": `${pageUrl}#service`,
+            generateSchema("service", {
+              id: `${pageUrl}#service`,
               name: content.title,
               description: content.description,
               serviceType: content.eyebrow,
               url: pageUrl,
-              provider: {
-                "@id": `${siteConfig.url}/#organization`,
-              },
-              areaServed: [
-                {
-                  "@type": "City",
-                  name: siteConfig.address.city,
-                },
-                {
-                  "@type": "Country",
-                  name: siteConfig.address.country,
-                },
-              ],
-            },
+            }),
+          ]
+        : []),
+      ...(faqItems.length > 0
+        ? [
+            generateSchema("faq", {
+              id: `${pageUrl}#faq`,
+              items: faqItems,
+            }),
           ]
         : []),
     ],

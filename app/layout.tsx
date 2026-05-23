@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Inter, Source_Serif_4 } from "next/font/google";
-import { headers } from "next/headers";
+import { Geist_Mono, Inter } from "next/font/google";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildOrganizationGraph } from "@/lib/organization-schema";
 import { OG_IMAGE_HEIGHT, OG_IMAGE_PATH, OG_IMAGE_WIDTH } from "@/lib/seo-constants";
-import { absoluteUrl, alternateLanguages } from "@/lib/seo";
+import { alternateLanguages, generateCanonicalUrl } from "@/lib/seo/url";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
@@ -18,13 +17,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const sourceSerif = Source_Serif_4({
-  variable: "--font-serif",
-  subsets: ["latin", "cyrillic"],
-});
-
 const defaultTitle =
-  "Web Design & SEO Agency in Almaty | NovaCreator Studio";
+  "Digital Growth Studio in Almaty | NovaCreator";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -35,22 +29,17 @@ export const metadata: Metadata = {
   category: "business",
   title: {
     default: defaultTitle,
-    template: "%s",
+    template: "%s | NovaCreator",
   },
   description: siteConfig.defaultDescription,
   alternates: {
-    canonical: absoluteUrl("/", "ru"),
+    canonical: generateCanonicalUrl("/", "ru"),
     languages: alternateLanguages("/"),
   },
   icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon.png", type: "image/png" },
-      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
-      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
-    ],
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: [{ url: "/icon", type: "image/png" }],
+    shortcut: "/icon",
+    apple: "/apple-icon",
   },
   manifest: "/manifest.webmanifest",
   openGraph: {
@@ -100,15 +89,11 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headersList = await headers();
-  const localeHeader = headersList.get("x-site-locale");
-  const lang = localeHeader === "en" ? "en" : "ru";
-
   return (
     <html
-      lang={lang}
+      lang="ru"
       suppressHydrationWarning
-      className={`${inter.variable} ${sourceSerif.variable} ${geistMono.variable}`}
+      className={`${inter.variable} ${geistMono.variable}`}
     >
       <body>
         <JsonLd data={buildOrganizationGraph()} id="ld-organization" />

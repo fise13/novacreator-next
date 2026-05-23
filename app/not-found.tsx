@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import { Link } from "@/i18n/navigation";
+import { createSeoMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createSeoMetadata({
+  locale: "ru",
+  path: "/not-found",
+  title: "Страница не найдена (404)",
+  description: "Страница удалена или перемещена. Перейдите в нужный раздел NovaCreator.",
+  noIndex: true,
+});
 
 export default function NotFound() {
   return (

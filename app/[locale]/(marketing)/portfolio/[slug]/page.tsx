@@ -7,8 +7,10 @@ import { HomeFooter } from "@/components/home/HomeFooter";
 import { MotorLandPreview } from "@/components/home/MotorLandPreview";
 import { PremiumNavbar } from "@/components/home/PremiumNavbar";
 import { getHomeContent, type HomeLocale } from "@/components/home/home-content";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Link } from "@/i18n/navigation";
 import { createSeoMetadata, normalizeSeoLocale, portfolioSeoEntries } from "@/lib/seo";
+import { createPageUrl, generateSchema } from "@/lib/seo/schema";
 
 type LocalizedProject = {
   kicker: string;
@@ -307,8 +309,41 @@ export default async function PortfolioDetailPage({
     notFound();
   }
 
+  const pageUrl = createPageUrl(`/portfolio/${slug}`, normalizedLocale);
+  const projectSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      generateSchema("breadcrumb", {
+        id: `${pageUrl}#breadcrumb`,
+        items: [
+          { name: locale === "en" ? "Home" : "Главная", item: createPageUrl("/", normalizedLocale) },
+          { name: locale === "en" ? "Portfolio" : "Портфолио", item: createPageUrl("/portfolio", normalizedLocale) },
+          { name: project.title, item: pageUrl },
+        ],
+      }),
+      generateSchema("article", {
+        id: `${pageUrl}#case-study`,
+        url: pageUrl,
+        title: project.title,
+        description: project.intro,
+        locale: normalizedLocale,
+        publishedAt: "2026-05-01",
+        updatedAt: "2026-05-01",
+        keywords: [project.kicker, "case study", "digital studio"],
+      }),
+      generateSchema("review", {
+        id: `${pageUrl}#review`,
+        itemName: project.title,
+        reviewBody: project.outcome,
+        locale: normalizedLocale,
+        url: pageUrl,
+      }),
+    ],
+  };
+
   return (
     <PageMotionShell>
+      <JsonLd data={projectSchema} id={`portfolio-json-ld-${normalizedLocale}-${slug}`} />
       <PremiumNavbar content={homeContent} locale={normalizedLocale} />
       <main id="main-content" className="px-3 pb-16 pt-28 sm:px-4 sm:pb-20 sm:pt-36">
         <article className="mx-auto max-w-7xl">

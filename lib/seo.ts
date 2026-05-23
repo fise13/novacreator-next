@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import { isBlogPostIndexable } from "@/lib/blog-indexing";
 import { getMarketingPageContent, type MarketingPageKey } from "@/lib/marketing-page-content";
-import { OG_IMAGE_HEIGHT, OG_IMAGE_PATH, OG_IMAGE_WIDTH, SERVICE_SILO_PATHS } from "@/lib/seo-constants";
-import { siteConfig } from "@/lib/site-config";
-
-export type SeoLocale = "ru" | "en";
+import { SERVICE_SILO_PATHS, type SeoLocale } from "@/config/seo/constants";
+import { createSeoMetadata } from "@/lib/seo/core";
+import {
+  alternateLanguages,
+  alternateLanguagesForPaths,
+  generateCanonicalUrl,
+  normalizeSeoLocale,
+} from "@/lib/seo/url";
 
 type SeoRoute = {
   path: string;
@@ -196,113 +200,6 @@ export const blogSlugAlternates = [
   },
 ] as const;
 
-export function normalizeSeoLocale(locale: string): SeoLocale {
-  return locale === "en" ? "en" : "ru";
-}
-
-export function localizePath(path: string, locale: SeoLocale) {
-  const normalizedPath = path === "/" ? "" : path;
-  return locale === "en" ? `/en${normalizedPath}` : normalizedPath || "/";
-}
-
-export function absoluteUrl(path: string, locale: SeoLocale = "ru") {
-  return new URL(localizePath(path, locale), siteConfig.url).toString();
-}
-
-export function alternateLanguages(path: string) {
-  return {
-    ru: absoluteUrl(path, "ru"),
-    en: absoluteUrl(path, "en"),
-    "x-default": absoluteUrl(path, "ru"),
-  };
-}
-
-export function alternateLanguagesForPaths(paths: Partial<Record<SeoLocale, string>>) {
-  const ruPath = paths.ru ?? paths.en ?? "/";
-  const languages: Record<string, string> = {
-    "x-default": absoluteUrl(ruPath, "ru"),
-  };
-
-  if (paths.ru) {
-    languages.ru = absoluteUrl(paths.ru, "ru");
-  }
-
-  if (paths.en) {
-    languages.en = absoluteUrl(paths.en, "en");
-  }
-
-  return languages;
-}
-
-export function createSeoMetadata({
-  locale,
-  path,
-  title,
-  description,
-  alternatePaths,
-  noIndex = false,
-}: {
-  locale: string;
-  path: string;
-  title: string;
-  description: string;
-  alternatePaths?: Partial<Record<SeoLocale, string>>;
-  noIndex?: boolean;
-}): Metadata {
-  const normalizedLocale = normalizeSeoLocale(locale);
-  const url = absoluteUrl(path, normalizedLocale);
-
-  const ogImages = [
-    {
-      url: OG_IMAGE_PATH,
-      width: OG_IMAGE_WIDTH,
-      height: OG_IMAGE_HEIGHT,
-      alt: siteConfig.name,
-    },
-  ];
-
-  return {
-    title: { absolute: title },
-    description,
-    alternates: {
-      canonical: url,
-      languages: alternatePaths ? alternateLanguagesForPaths(alternatePaths) : alternateLanguages(path),
-    },
-    openGraph: {
-      title,
-      description,
-      url,
-      siteName: siteConfig.name,
-      locale: normalizedLocale === "ru" ? "ru_KZ" : "en_US",
-      alternateLocale: normalizedLocale === "ru" ? ["en_US"] : ["ru_KZ"],
-      type: "website",
-      images: ogImages,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [OG_IMAGE_PATH],
-    },
-    robots: noIndex
-      ? {
-          index: false,
-          follow: true,
-        }
-      : {
-          index: true,
-          follow: true,
-          googleBot: {
-            index: true,
-            follow: true,
-            "max-image-preview": "large",
-            "max-snippet": -1,
-            "max-video-preview": -1,
-          },
-        },
-  };
-}
-
 export function createMarketingMetadata(locale: string, pageKey: MarketingPageKey): Metadata {
   const content = getMarketingPageContent(locale, pageKey);
 
@@ -317,3 +214,7 @@ export function createMarketingMetadata(locale: string, pageKey: MarketingPageKe
 export function getIndexableBlogSlugAlternates() {
   return blogSlugAlternates.filter((entry) => isBlogPostIndexable(entry.ru) || isBlogPostIndexable(entry.en));
 }
+
+export { createSeoMetadata, normalizeSeoLocale, alternateLanguages, alternateLanguagesForPaths };
+export type { SeoLocale };
+export const absoluteUrl = generateCanonicalUrl;

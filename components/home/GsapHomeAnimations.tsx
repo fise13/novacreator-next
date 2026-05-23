@@ -51,8 +51,8 @@ export function GsapHomeAnimations() {
 
       gsap.fromTo(
         "[data-gsap='nav']",
-        { y: -18, opacity: 0 },
-        { y: 0, opacity: 1, duration: navDuration, ease: "power3.out" },
+        { y: -10 },
+        { y: 0, duration: navDuration, ease: "power3.out" },
       );
 
       gsap.fromTo(
@@ -72,7 +72,7 @@ export function GsapHomeAnimations() {
 
       gsap.fromTo(
         "[data-gsap='hero-line']",
-        { yPercent: 80, rotate: 0.6 },
+        { yPercent: 20, rotate: 0.4 },
         {
           yPercent: 0,
           rotate: 0,
@@ -85,11 +85,9 @@ export function GsapHomeAnimations() {
 
       gsap.fromTo(
         "[data-gsap='hero-fade']",
-        { y: 18, opacity: 0, filter: "blur(6px)" },
+        { y: 12 },
         {
           y: 0,
-          opacity: 1,
-          filter: "blur(0px)",
           duration: heroFadeDuration,
           ease: "power3.out",
           stagger: isMobile ? 0.025 : 0.06,
@@ -263,7 +261,7 @@ export function GsapHomeAnimations() {
             start: element.dataset.pinStart ?? "top 110px",
             end: element.dataset.pinEnd ?? "bottom bottom",
             pin: element,
-            pinSpacing: false,
+            pinSpacing: true,
           });
         });
       });
@@ -472,34 +470,6 @@ export function GsapHomeAnimations() {
         element.addEventListener("pointerleave", onLeave);
         cleanups.push(() => {
           element.removeEventListener("pointermove", onMove);
-          element.removeEventListener("pointerleave", onLeave);
-        });
-      });
-
-      gsap.utils.toArray<HTMLElement>("a, button").forEach((element) => {
-        if (
-          element.hasAttribute("data-gsap-magnetic") ||
-          element.closest("[data-no-button-motion]")
-        ) {
-          return;
-        }
-
-        const scale = gsap.quickTo(element, "scale", { duration: 0.22, ease: "power2.out" });
-        const y = gsap.quickTo(element, "y", { duration: 0.22, ease: "power2.out" });
-
-        const onEnter = () => {
-          scale(1.015);
-          y(-1);
-        };
-        const onLeave = () => {
-          scale(1);
-          y(0);
-        };
-
-        element.addEventListener("pointerenter", onEnter);
-        element.addEventListener("pointerleave", onLeave);
-        cleanups.push(() => {
-          element.removeEventListener("pointerenter", onEnter);
           element.removeEventListener("pointerleave", onLeave);
         });
       });

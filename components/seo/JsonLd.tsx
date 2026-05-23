@@ -1,5 +1,5 @@
 type JsonLdProps = {
-  data: Record<string, unknown> | Record<string, unknown>[];
+  data: unknown;
   id?: string;
 };
 

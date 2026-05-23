@@ -483,7 +483,7 @@ const pageContent: Record<MarketingLocale, Record<MarketingPageKey, MarketingPag
     calculator: {
       eyebrow: "Калькулятор",
       title: "Калькулятор стоимости проекта",
-      description: "Страница для переноса точной математики PHP/JS калькулятора: услуги, валюта, сроки и диапазоны.",
+      description: "Онлайн-калькулятор стоимости сайта, SEO и Google Ads в Алматы: формат проекта, сроки, сложность и ориентир бюджета.",
       primaryCta: "Оставить заявку",
       sections: [
         {
@@ -946,7 +946,7 @@ const pageContent: Record<MarketingLocale, Record<MarketingPageKey, MarketingPag
     calculator: {
       eyebrow: "Calculator",
       title: "Project planner",
-      description: "A practical estimate tool for services, currency, timelines and project ranges.",
+      description: "Online estimator for website development, SEO and Google Ads in Almaty with scope, timeline and budget ranges.",
       primaryCta: "Leave request",
       sections: [
         {

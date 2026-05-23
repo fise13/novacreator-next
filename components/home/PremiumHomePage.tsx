@@ -19,13 +19,15 @@ export function PremiumHomePage({ locale }: { locale: string }) {
   return (
     <PageMotionShell className="text-[#111111]">
       <PremiumNavbar content={content} locale={normalizedLocale} />
-      <CinematicHero content={content} locale={normalizedLocale} />
-      <ScrollMesmerisingSection locale={normalizedLocale} />
-      <ServicesShowcase content={content} locale={normalizedLocale} />
-      <SelectedWorkSection content={content} locale={normalizedLocale} />
-      <ProcessTimeline content={content} />
-      <HomeFaqSection content={content} locale={normalizedLocale} />
-      <FinalCta content={content} />
+      <main id="main-content">
+        <CinematicHero content={content} locale={normalizedLocale} />
+        <ScrollMesmerisingSection locale={normalizedLocale} />
+        <ServicesShowcase content={content} locale={normalizedLocale} />
+        <SelectedWorkSection content={content} locale={normalizedLocale} />
+        <ProcessTimeline content={content} />
+        <HomeFaqSection content={content} locale={normalizedLocale} />
+        <FinalCta content={content} />
+      </main>
       <HomeFooter content={content} locale={normalizedLocale} />
     </PageMotionShell>
   );

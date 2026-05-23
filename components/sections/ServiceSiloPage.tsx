@@ -6,12 +6,11 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { HomeFooter } from "@/components/home/HomeFooter";
 import { PremiumNavbar } from "@/components/home/PremiumNavbar";
 import { getHomeContent, type HomeLocale } from "@/components/home/home-content";
-import { organizationId, websiteId } from "@/lib/organization-schema";
 import {
   getServiceSilo,
   type ServiceSiloKey,
 } from "@/lib/service-silo-content";
-import { absoluteUrl } from "@/lib/seo";
+import { createPageUrl, generateSchema } from "@/lib/seo/schema";
 
 type ServiceSiloPageProps = {
   locale: string;
@@ -24,7 +23,7 @@ export async function ServiceSiloPage({ locale, siloKey }: ServiceSiloPageProps)
   const content = getServiceSilo(siloKey, locale);
   const homeContent = getHomeContent(normalizedLocale);
   const isEn = normalizedLocale === "en";
-  const pageUrl = absoluteUrl(content.path, normalizedLocale);
+  const pageUrl = createPageUrl(content.path, normalizedLocale);
 
   const localizedHref = (href: string) =>
     normalizedLocale === "en" && href.startsWith("/") ? `/en${href === "/" ? "" : href}` : href;
@@ -32,53 +31,32 @@ export async function ServiceSiloPage({ locale, siloKey }: ServiceSiloPageProps)
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": `${pageUrl}#webpage`,
+      generateSchema("webPage", {
+        id: `${pageUrl}#webpage`,
         url: pageUrl,
         name: content.h1,
         description: content.metaDescription,
-        inLanguage: isEn ? "en" : "ru-KZ",
-        isPartOf: { "@id": websiteId },
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: isEn ? "Home" : "Главная",
-            item: absoluteUrl("/", normalizedLocale),
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: content.h1,
-            item: pageUrl,
-          },
+        locale: normalizedLocale,
+        aboutId: `${pageUrl}#service`,
+      }),
+      generateSchema("breadcrumb", {
+        id: `${pageUrl}#breadcrumb`,
+        items: [
+          { name: isEn ? "Home" : "Главная", item: createPageUrl("/", normalizedLocale) },
+          { name: content.h1, item: pageUrl },
         ],
-      },
-      {
-        "@type": "Service",
-        "@id": `${pageUrl}#service`,
+      }),
+      generateSchema("service", {
+        id: `${pageUrl}#service`,
         name: content.h1,
         description: content.intro,
         serviceType: content.serviceType,
         url: pageUrl,
-        provider: { "@id": organizationId },
-        areaServed: [
-          { "@type": "City", name: "Алматы" },
-          { "@type": "Country", name: "Казахстан" },
-        ],
-      },
-      {
-        "@type": "FAQPage",
-        mainEntity: content.faq.map((item) => ({
-          "@type": "Question",
-          name: item.question,
-          acceptedAnswer: { "@type": "Answer", text: item.answer },
-        })),
-      },
+      }),
+      generateSchema("faq", {
+        id: `${pageUrl}#faq`,
+        items: content.faq.map((item) => ({ question: item.question, answer: item.answer })),
+      }),
     ],
   };
 

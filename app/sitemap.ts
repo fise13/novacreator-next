@@ -2,13 +2,12 @@ import type { MetadataRoute } from "next";
 import {
   absoluteUrl,
   alternateLanguages,
-  alternateLanguagesForPaths,
-  getIndexableBlogSlugAlternates,
   portfolioSeoEntries,
   staticSeoRoutes,
 } from "@/lib/seo";
+import { getBlogPostAlternates, getBlogPostBySlug } from "@/lib/seo/blog-content";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
   const staticEntries = staticSeoRoutes.flatMap((route) => [
     {
@@ -56,33 +55,53 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ];
   });
 
-  const blogEntries = getIndexableBlogSlugAlternates().flatMap((entry) => {
-    const paths = {
-      ru: `/blog/${entry.ru}`,
-      en: `/blog/${entry.en}`,
-    };
+  const alternates = await getBlogPostAlternates();
+  const blogEntries = (
+    await Promise.all(
+      alternates.map(async (entry) => {
+        const ruPost = await getBlogPostBySlug("ru", entry.ru);
+        const enPost = await getBlogPostBySlug("en", entry.en);
+        if (!ruPost || !enPost) {
+          return [];
+        }
 
-    return [
-      {
-        url: absoluteUrl(paths.ru, "ru"),
-        lastModified: now,
-        changeFrequency: "monthly" as const,
-        priority: 0.55,
-        alternates: {
-          languages: alternateLanguagesForPaths(paths),
-        },
-      },
-      {
-        url: absoluteUrl(paths.en, "en"),
-        lastModified: now,
-        changeFrequency: "monthly" as const,
-        priority: 0.55,
-        alternates: {
-          languages: alternateLanguagesForPaths(paths),
-        },
-      },
-    ];
-  });
+        const paths = {
+          ru: `/blog/${entry.ru}`,
+          en: `/blog/${entry.en}`,
+        };
+        const lastModified = new Date(enPost.updatedAt ?? ruPost.updatedAt ?? enPost.publishedAt);
+
+        return [
+          {
+            url: absoluteUrl(paths.ru, "ru"),
+            lastModified,
+            changeFrequency: "monthly" as const,
+            priority: 0.55,
+            alternates: {
+              languages: {
+                ru: absoluteUrl(paths.ru, "ru"),
+                en: absoluteUrl(paths.en, "en"),
+                "x-default": absoluteUrl(paths.ru, "ru"),
+              },
+            },
+          },
+          {
+            url: absoluteUrl(paths.en, "en"),
+            lastModified,
+            changeFrequency: "monthly" as const,
+            priority: 0.55,
+            alternates: {
+              languages: {
+                ru: absoluteUrl(paths.ru, "ru"),
+                en: absoluteUrl(paths.en, "en"),
+                "x-default": absoluteUrl(paths.ru, "ru"),
+              },
+            },
+          },
+        ];
+      }),
+    )
+  ).flat();
 
   return [...staticEntries, ...portfolioEntries, ...blogEntries];
 }

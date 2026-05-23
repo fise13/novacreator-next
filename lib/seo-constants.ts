@@ -1,20 +1,8 @@
-export const OG_IMAGE_PATH = "/opengraph-image";
-export const OG_IMAGE_WIDTH = 1200;
-export const OG_IMAGE_HEIGHT = 630;
+import { OG_IMAGE, NOINDEX_PATHS, SERVICE_SILO_PATHS } from "@/config/seo/constants";
 
-export const NOINDEX_PATHS = new Set([
-  "/tabs",
-  "/login",
-  "/register",
-]);
+export const OG_IMAGE_PATH = OG_IMAGE.path;
+export const OG_IMAGE_WIDTH = OG_IMAGE.width;
+export const OG_IMAGE_HEIGHT = OG_IMAGE.height;
 
-export const SERVICE_SILO_PATHS = [
-  "/web-design-almaty",
-  "/seo-agency-almaty",
-  "/branding-agency",
-  "/ui-ux-design",
-  "/mobile-app-development",
-  "/google-ads-management",
-] as const;
-
+export { NOINDEX_PATHS, SERVICE_SILO_PATHS };
 export type ServiceSiloPath = (typeof SERVICE_SILO_PATHS)[number];

@@ -1,7 +1,15 @@
 "use client";
 
-import { GsapHomeAnimations } from "@/components/home/GsapHomeAnimations";
-import { SmoothScroll } from "@/components/home/SmoothScroll";
+import dynamic from "next/dynamic";
+
+const GsapHomeAnimations = dynamic(
+  () => import("@/components/home/GsapHomeAnimations").then((mod) => mod.GsapHomeAnimations),
+  { ssr: false },
+);
+const SmoothScroll = dynamic(
+  () => import("@/components/home/SmoothScroll").then((mod) => mod.SmoothScroll),
+  { ssr: false },
+);
 
 type PageMotionShellProps = {
   children: React.ReactNode;

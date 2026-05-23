@@ -32,9 +32,7 @@ export default async function LocaleLayout({
       >
         Skip to main
       </a>
-      <main id="main-content" className="min-h-screen">
-        {children}
-      </main>
+      <div lang={locale}>{children}</div>
     </Providers>
   );
 }

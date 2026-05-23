@@ -1,5 +1,4 @@
-import type { SeoLocale } from "@/lib/seo";
-import type { ServiceSiloPath } from "@/lib/seo-constants";
+import type { SeoLocale, ServiceSiloPath } from "@/config/seo/constants";
 
 export type ServiceSiloKey =
   | "web-design-almaty"
